@@ -14,7 +14,7 @@ const CRegister = () => {
   const [Intro, setIntro] = useState("");
   const [Genre, setGenre] = useState("");
 
-  const dupcheck = async (event) => {
+  /*const dupcheck = async (event) => {
     await axios
       .get("https://dowajo.run.goorm.site/api/check_ID/{ID}", {})
       .then((response) => {
@@ -30,7 +30,7 @@ const CRegister = () => {
         alert("가입성공.");
       });
   };
-
+*/
   const CRegi = async (event) => {
     // navigate("/Cpage");
     await axios
@@ -139,7 +139,7 @@ const CRegister = () => {
           />
 
           <br />
-          <btn onClick={dupcheck}>중복확인</btn>
+          <button /*onClick={dupcheck}*/>중복확인</button>
           <br></br>
           <br></br>
           <label htmlFor="password"> 비밀번호</label>
