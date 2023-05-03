@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import React, { useRef, useState } from "react";
-import { Jwt } from "jsonwebtoken";
+
 import axios from "axios";
 //import "./img.css";
 
@@ -44,7 +44,6 @@ const CRegister = () => {
             console.log(response.data);
             setUrl(response.data.url);
             console.log(url);
-          
           }
         });
     }
