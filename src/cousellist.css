@@ -1,0 +1,44 @@
+.c_box {
+  border: 1px solid;
+  display: inline-block;
+  width: 500px;
+  height: 200px;
+  background-color: white;
+  border: none;
+  margin: 1%;
+  border-radius: 3%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 1%;
+}
+
+.c_field {
+  margin-top: 2%;
+  font-size: large;
+  display: inline-block;
+  padding-left: 5%;
+}
+
+.c_name {
+  font-size: large;
+  display: inline-block;
+  padding-left: 5%;
+}
+
+.c_intro {
+  margin-left: 5%;
+  white-space: nowrap;
+  justify-content: center;
+  font-size: medium;
+}
+.c_img {
+  border-radius: 50%;
+  margin-left: 5%;
+  max-width: 20%;
+  max-height: 20%;
+  object-fit: contain;
+}
+.c_im_in {
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+}

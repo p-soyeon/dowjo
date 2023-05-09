@@ -1,0 +1,23 @@
+.client_btn {
+  width: 50%;
+  background-color: rgb(236, 232, 209);
+  padding-top: 20%;
+  padding-bottom: 20%;
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+}
+.counsel_btn {
+  width: 50%;
+  background-color: rgb(190, 210, 178);
+  padding-top: 20%;
+  padding-bottom: 20%;
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+}
+
+h2 {
+  font-weight: 900;
+  text-align: center;
+}

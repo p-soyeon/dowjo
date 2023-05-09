@@ -3,6 +3,7 @@ import "./Loginpage.css";
 import axios from "axios";
 import { useState } from "react";
 import jwt from "jwt-decode";
+import jwt_decode from "jwt-decode";
 
 const Loginpage = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Loginpage = () => {
   const Register = () => {
     navigate("/Select");
   };
+  //const tokendecode = jwt_decode(token);
   const Logout = () => {};
   let token;
   let rftoken;
@@ -40,11 +42,12 @@ const Loginpage = () => {
           token = response.data.accessToken;
           localStorage.setItem("token", response.data.accessToken);
           localStorage.setItem("rftoken", response.data.refreshToken);
-          console.log(jwt(token));
+          // console.log(jwt(token));
+          //console.log(tokendecode);
           //  axios.defaults.headers.common["Authorization"] = //
           axios.post();
 
-          navigate("/Mainpage");
+          // navigate("/Mainpage");
         } else {
           console.log(response.data);
         }
@@ -85,9 +88,7 @@ const Loginpage = () => {
         <button onClick={Login} className="lg">
           로그인
         </button>
-        <button onClick={Logout} className="lg">
-          로그아웃
-        </button>
+
         <br></br>
         <button className="rg" onClick={Register}>
           회원가입

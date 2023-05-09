@@ -12,11 +12,14 @@ import UserRegister from "./UserRegister";
 import Cpage from "./Cpage";
 import Upage from "./Upage";
 import Net from "./Net";
+import Nav from "./Nav";
 function App() {
   const [Counselor, setCounselor] = useState();
+  const [Id, setId] = useState("");
   return (
     <BrowserRouter>
       <div className="App">
+        <Nav></Nav>
         <Routes>
           <Route
             path="/"

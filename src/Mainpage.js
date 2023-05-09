@@ -2,7 +2,9 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
-import { Counselorbox } from "./cousellist";
+import { Link } from "react-router-dom";
+import { Counselorbox } from "./Counselorbox";
+import "./Mainpage.css";
 const main = {
   border: "1px solid black",
   backgroundColor: "grey",
@@ -24,6 +26,7 @@ const box = {
 
 const Mainpage = () => {
   const [counSelor, setCounselor] = useState([]);
+  const [checkfield, setcheckfield] = useState([]);
   useEffect(() => {
     if (localStorage.getItem("rftoken") === null) {
       window.location.replace("/");
@@ -37,20 +40,19 @@ const Mainpage = () => {
     }
   }, [setCounselor]); //로컬스토리지가 비어있으면 로그인페이지로 이동
   const navigate = useNavigate();
-  const Login = () => {
-    navigate("/Loginpage");
-  };
-  const Register = () => {
-    navigate("/Select");
-  };
-  const Mp1 = () => {
-    navigate("/Mypage1");
-  };
-  const Mp2 = () => {
-    navigate("/Mypage2");
-  };
-  const Reserve = () => {
-    navigate("/Reserve");
+  const checkbox = (event) => {
+    setcheckfield(event.currentTarget.value);
+    axios
+      .get(
+        `http://dowajo.run.goorm.site/api/counselor/field?field=${checkfield}`,
+        { params: { field: checkfield } }
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
   const logout = () => {
     let rftoken = localStorage.getItem("rftoken");
@@ -77,12 +79,14 @@ const Mainpage = () => {
   return (
     <div>
       <button onClick={logout}>로그아웃</button>
-
       <main>
-        {counSelor.map((counsel) => {
-          return <Counselorbox key={`key-${counsel.id}`} counsel={counsel} />;
-        })}
-      </main>
+        {" "}
+        <div className="c_total">
+          {counSelor.map((counsel) => {
+            return <Counselorbox key={`key-${counsel.id}`} counsel={counsel} />;
+          })}
+        </div>
+      </main>{" "}
     </div>
   );
 };

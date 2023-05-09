@@ -1,0 +1,18 @@
+.c_total {
+  background-color: #ece8d1;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  width: 90%;
+  overflow: hidden;
+  position: absolute;
+  top: 40%; /* 부모 요소 중앙 기준으로 위로 50% 이동 */
+  left: 50%; /* 부모 요소 중앙 기준으로 왼쪽으로 50% 이동 */
+  transform: translate(
+    -50%,
+    -30%
+  ); /* 요소의 가로, 세로 크기의 절반만큼 왼쪽, 위로 이동 */
+
+  justify-content: center;
+  align-items: center;
+}
