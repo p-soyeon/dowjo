@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import { ko } from "date-fns/esm/locale";
 import { Counselorbox } from "./Counselorbox";
 import "react-datepicker/dist/react-datepicker.css";
+
 const Reserve = ({}) => {
   const accesstoken = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const Reserve = ({}) => {
   // const [intro,setintro] =useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [name, setName] = useState("");
+  const [intro, setintro] = useState("");
   //setId("1");
   useEffect(() => {
     axios
@@ -37,6 +39,7 @@ const Reserve = ({}) => {
         console.log(response.data);
         seturl(response.data.img);
         setName(response.data.name);
+        setintro(response.data.intro);
       });
   });
   useEffect(() => {
@@ -94,6 +97,7 @@ const Reserve = ({}) => {
     <div>
       <div>상담사 id: {id}</div>
       <img src={"https://dowajo.run.goorm.site" + imgurl} />
+      <div>{intro}y</div>
       <div>{name}</div>
       <div>
         <DatePicker

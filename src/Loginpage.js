@@ -47,9 +47,10 @@ const Loginpage = () => {
           //  axios.defaults.headers.common["Authorization"] = //
           axios.post();
 
-          // navigate("/Mainpage");
+          navigate("/MyPage1");
         } else {
           console.log(response.data);
+          alert(" 아이디 또는 비밀번호를 확인하세요");
         }
       })
       .catch((err) => {

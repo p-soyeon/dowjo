@@ -25,9 +25,17 @@ const box = {
 };
 
 const Mainpage = () => {
+  const rftoken = localStorage.getItem("rftoken");
+  const params = new URLSearchParams();
   const [counSelor, setCounselor] = useState([]);
-  const [checkfield, setcheckfield] = useState([]);
+  const [token, settoken] = useState([]);
+  const [checkfield, setcheckfield] = useState([]); //checkbox 를 체크하면 해당 feild가 쿼리로 전해짐
+  const [filtered, setFiltered] = useState([]); //백엔드에서 필터링되어 반환된 데이터를 담음
+  const accesstoken = localStorage.getItem("token");
+  //  settoken(accesstoken);
+
   useEffect(() => {
+    //서버에서 모든 상담사 목록 get
     if (localStorage.getItem("rftoken") === null) {
       window.location.replace("/");
     } else {
@@ -36,24 +44,43 @@ const Mainpage = () => {
         .then((response) => {
           console.log(response.data);
           setCounselor(response.data);
+          setFiltered(response.data); //처음 렌더링 되면  filtered 에는 모든 정보가 들어있음
+        })
+        .catch((error) => {
+          console.error(error);
         });
     }
-  }, [setCounselor]); //로컬스토리지가 비어있으면 로그인페이지로 이동
-  const navigate = useNavigate();
+  }, []); //로컬스토리지가 비어있으면 로그인페이지로 이동
+
   const checkbox = (event) => {
-    setcheckfield(event.currentTarget.value);
+    const { value, checked } = event.target; //버튼이 눌리면 value 값과 checked여부를 저장
+    if (checked) {
+      //체크 되었으면 체크필드에 값을 배열로 저장해줌
+      setcheckfield([...checkfield, value]); //체크필드에 값을 배열로 저장해줌
+    } else {
+      setcheckfield(checkfield.filter((filter) => filter !== value));
+    } //체크 취소하면 해당 배열 제외하고 반환
+
     axios
       .get(
-        `http://dowajo.run.goorm.site/api/counselor/field?field=${checkfield}`,
-        { params: { field: checkfield } }
+        `http://dowajo.run.goorm.site/api/counselor/field?${params.toString()}`
       )
       .then((response) => {
         console.log(response.data);
+        setFiltered(response.data); //Filtered 에 response.data를 담았음 선택된 value 에 해당하는 배열을 Filtered 에 저장해놓음
       })
       .catch((error) => {
         console.log(error.response);
       });
   };
+  console.log(checkfield);
+  for (let i = 0; i < checkfield.length; i++) {
+    params.append("field", checkfield[i]);
+  } //체크 박스 함수가 실행되고 결과로 나온 체크필드배열의 길이만큼
+  //빈복문을 돌면서 쿼리에 append 해줌
+
+  console.log(params);
+
   const logout = () => {
     let rftoken = localStorage.getItem("rftoken");
 
@@ -74,15 +101,79 @@ const Mainpage = () => {
         }
       });
   }; //로그아웃 버튼누르면 토큰 지워짐
-  //axios 헤더에 담아서
 
   return (
     <div>
       <button onClick={logout}>로그아웃</button>
+      <div>
+        <label htmlFor="checkbox-a">
+          <input
+            type="checkbox"
+            id="checkbox-a"
+            onChange={(event) => checkbox(event)}
+            value="학업"
+          />
+          학업
+        </label>
+        <label htmlFor="checkbox-b">
+          <input
+            type="checkbox"
+            id="checkbox-b"
+            onChange={(event) => checkbox(event)}
+            value="진로"
+          />
+          진로
+        </label>
+        <label htmlFor="checkbox-c">
+          <input
+            type="checkbox"
+            id="checkbox-c"
+            onChange={(event) => checkbox(event)}
+            value="건강"
+          />
+          건강
+        </label>
+        <label htmlFor="checkbox-d">
+          <input
+            type="checkbox"
+            id="checkbox-d"
+            onChange={(event) => checkbox(event)}
+            value="심리"
+          />
+          심리
+        </label>
+        <label htmlFor="checkbox-e">
+          <input
+            type="checkbox"
+            id="checkbox-e"
+            onChange={(event) => checkbox(event)}
+            value="법률"
+          />
+          법률
+        </label>
+        <label htmlFor="checkbox-f">
+          <input
+            type="checkbox"
+            id="checkbox-f"
+            onChange={(event) => checkbox(event)}
+            value="투자"
+          />
+          투자
+        </label>
+        <label htmlFor="checkbox-f">
+          <input
+            type="checkbox"
+            id="checkbox-f"
+            onChange={(event) => checkbox(event)}
+            value="기타"
+          />
+          기타
+        </label>
+      </div>
       <main>
         {" "}
         <div className="c_total">
-          {counSelor.map((counsel) => {
+          {filtered.map((counsel) => {
             return <Counselorbox key={`key-${counsel.id}`} counsel={counsel} />;
           })}
         </div>

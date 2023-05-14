@@ -29,7 +29,7 @@ export const Counselorbox = ({ counsel }) => {
   }, [Id]);
   //Id 가 변경되면 useEffect 문 실행됨
   return (
-    <div className="c_box">
+    <div key={counsel.id} className="c_box">
       <div className="c_field">
         <span>{counsel.field}</span>
       </div>
