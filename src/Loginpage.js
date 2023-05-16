@@ -66,31 +66,42 @@ const Loginpage = () => {
       <h2 className="login">로그인</h2>
       <br></br>
       <form onChange={onSubmitHandler}>
-        <label>이메일 </label>
-        <input
-          onChange={onEmailHandler}
-          className="box1"
-          id="email"
-          type="email"
-        ></input>
-        <br></br>
-
-        <label>비밀번호</label>
-        <input
-          onChange={onPwHandler}
-          className="box2"
-          id="pw"
-          type="password"
-        ></input>
-        <br></br>
+        <table>
+          <tr>
+            <td>
+              {" "}
+              <label>이메일 </label>
+            </td>
+            <td>
+              <input
+                onChange={onEmailHandler}
+                className="box1"
+                id="email"
+                type="email"
+              ></input>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>비밀번호</label>
+            </td>
+            <td>
+              {" "}
+              <input
+                onChange={onPwHandler}
+                className="box2"
+                id="pw"
+                type="password"
+              ></input>
+            </td>
+          </tr>
+        </table>
       </form>
-      <br></br>
+
       <div className="btnlg">
         <button onClick={Login} className="lg">
           로그인
         </button>
-
-        <br></br>
         <button className="rg" onClick={Register}>
           회원가입
         </button>

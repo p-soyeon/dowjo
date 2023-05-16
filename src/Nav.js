@@ -10,20 +10,18 @@ const Navbar = () => {
     <div>
       <nav>
         <ul>
-          <li>
-            <img src="./로고 500x200.png"></img>
+          <li className="logo_ul">
+            {" "}
+            <img
+              className="logo_img"
+              alt="logo_img"
+              src={"http://dowajo.run.goorm.site/img/logo.png"}
+            />
           </li>
-          <li>
-            <a href="#">메뉴1</a>
-          </li>
-          <li>
-            <a href="#">메뉴2</a>
-          </li>
-        </ul>
-        <ul className="lg">
+
           <li>
             {
-              <button className="rg" onClick={Loginpage}>
+              <button className="nav_lg" onClick={Loginpage}>
                 로그인
               </button>
             }

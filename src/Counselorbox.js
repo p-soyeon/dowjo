@@ -36,7 +36,7 @@ export const Counselorbox = ({ counsel }) => {
       <div className="c_name">
         <span>{counsel.name}</span>
       </div>{" "}
-      <div>
+      <div className="c_btn">
         <button onClick={onSetId} value={counsel.id}>
           예약
         </button>

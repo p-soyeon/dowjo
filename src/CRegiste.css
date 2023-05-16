@@ -1,26 +1,16 @@
 .mainp {
-  position: absolute;
+  float: right;
+  display: flex; /* div 요소를 flex 컨테이너로 설정 */
+  justify-content: center; /* 가로 방향 가운데 정렬 */
+  align-items: center; /* 세로 방향 가운데 정렬 */
 
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 700px;
-  background: #ffffff;
-  border: 1px solid #000000;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 0;
-  margin: 0px;
-  padding: 100px;
+  width: 50%;
   height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-}
-body {
+  background: #ffffff;
+  padding-top: 5%;
+  padding-bottom: 10%;
+  border: 0;
+  margin-top: 2%;
 }
 
 .cr {
@@ -35,7 +25,11 @@ body {
   color: #000000;
   margin-left: 200px;
 }
-
+img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
 input {
   margin-right: 20px;
   padding: 0px;
@@ -74,4 +68,7 @@ textarea {
 .btn {
   text-align: center;
   margin-right: 25px;
+}
+form {
+  width: 253px;
 }

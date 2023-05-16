@@ -77,7 +77,7 @@ const Mainpage = () => {
         setFiltered(response.data);
       } catch (error) {
         console.log(error);
-        setFiltered(counSelor);
+        setFiltered(counSelor); //if 문써서 params 없으면 counselor api 호출 .
       }
     };
 
@@ -114,70 +114,94 @@ const Mainpage = () => {
   return (
     <div>
       <button onClick={logout}>로그아웃</button>
-      <div>
-        <label htmlFor="checkbox-a">
-          <input
-            type="checkbox"
-            id="checkbox-a"
-            onChange={(event) => Checkbox(event)}
-            value="학업"
-          />
-          학업
-        </label>
-        <label htmlFor="checkbox-b">
-          <input
-            type="checkbox"
-            id="checkbox-b"
-            onChange={(event) => Checkbox(event)}
-            value="진로"
-          />
-          진로
-        </label>
-        <label htmlFor="checkbox-c">
-          <input
-            type="checkbox"
-            id="checkbox-c"
-            onChange={(event) => Checkbox(event)}
-            value="건강"
-          />
-          건강
-        </label>
-        <label htmlFor="checkbox-d">
-          <input
-            type="checkbox"
-            id="checkbox-d"
-            onChange={(event) => Checkbox(event)}
-            value="심리"
-          />
-          심리
-        </label>
-        <label htmlFor="checkbox-e">
-          <input
-            type="checkbox"
-            id="checkbox-e"
-            onChange={(event) => Checkbox(event)}
-            value="법률"
-          />
-          법률
-        </label>
-        <label htmlFor="checkbox-f">
-          <input
-            type="checkbox"
-            id="checkbox-f"
-            onChange={(event) => Checkbox(event)}
-            value="투자"
-          />
-          투자
-        </label>
-        <label htmlFor="checkbox-f">
-          <input
-            type="checkbox"
-            id="checkbox-f"
-            onChange={(event) => Checkbox(event)}
-            value="기타"
-          />
-          기타
-        </label>
+      <div className="category">
+        <table>
+          <tr>
+            <td>
+              {" "}
+              <label htmlFor="checkbox-a">
+                <input
+                  type="checkbox"
+                  id="checkbox-a"
+                  onChange={(event) => Checkbox(event)}
+                  value="학업"
+                />
+                학업
+              </label>
+            </td>{" "}
+            <td>
+              <label htmlFor="checkbox-b">
+                <input
+                  type="checkbox"
+                  id="checkbox-b"
+                  onChange={(event) => Checkbox(event)}
+                  value="진로"
+                />
+                진로
+              </label>
+            </td>{" "}
+            <td>
+              {" "}
+              <label htmlFor="checkbox-c">
+                <input
+                  type="checkbox"
+                  id="checkbox-c"
+                  onChange={(event) => Checkbox(event)}
+                  value="건강"
+                />
+                건강
+              </label>
+            </td>{" "}
+            <td>
+              {" "}
+              <label htmlFor="checkbox-d">
+                <input
+                  type="checkbox"
+                  id="checkbox-d"
+                  onChange={(event) => Checkbox(event)}
+                  value="심리"
+                />
+                심리
+              </label>
+            </td>{" "}
+            <td>
+              {" "}
+              <label htmlFor="checkbox-e">
+                <input
+                  type="checkbox"
+                  id="checkbox-e"
+                  onChange={(event) => Checkbox(event)}
+                  value="법률"
+                />
+                법률
+              </label>
+            </td>{" "}
+            <td>
+              {" "}
+              <label htmlFor="checkbox-f">
+                <input
+                  type="checkbox"
+                  id="checkbox-f"
+                  onChange={(event) => Checkbox(event)}
+                  value="투자"
+                />
+                투자
+              </label>
+            </td>{" "}
+            <td>
+              {" "}
+              <label htmlFor="checkbox-g">
+                <input
+                  type="checkbox"
+                  id="checkbox-f"
+                  onChange={(event) => Checkbox(event)}
+                  value="기타"
+                />
+                기타
+              </label>
+            </td>
+          </tr>
+        </table>
       </div>
       <main>
         {" "}

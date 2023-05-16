@@ -13,32 +13,46 @@
 
 .c_field {
   margin-top: 2%;
-  font-size: large;
+  font-size: larger;
   display: inline-block;
   padding-left: 5%;
 }
 
 .c_name {
-  font-size: large;
+  font-size: larger;
   display: inline-block;
   padding-left: 5%;
 }
 
 .c_intro {
   margin-left: 5%;
-  white-space: nowrap;
+  white-space: normal;
   justify-content: center;
   font-size: medium;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 5%;
 }
 .c_img {
+  display: inline-block;
+  width: 100px;
+  box-sizing: border-box;
   border-radius: 50%;
   margin-left: 5%;
-  max-width: 20%;
-  max-height: 20%;
+  height: 100px;
   object-fit: contain;
 }
 .c_im_in {
+  display: inline-flex;
+  align-items: center;
   max-height: 100%;
   max-width: 100%;
-  display: block;
+  box-sizing: border-box;
+}
+.c_btn {
+  display: inline-block;
+}
+.c_btn > button {
+  font-size: large;
 }

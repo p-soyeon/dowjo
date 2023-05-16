@@ -3,17 +3,11 @@ nav {
 
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
 }
 
 ul {
   list-style: none;
   display: flex;
-}
-
-li {
-  margin-left: 2rem;
 }
 
 a {
@@ -22,6 +16,21 @@ a {
   text-decoration: none;
   font-size: 1.2rem;
 }
+.lg_ul {
+  height: 20px;
+
+  justify-content: flex-start;
+  align-items: center;
+}
 .lg {
-  background-color: white;
+  width: 100px;
+}
+.logo_img {
+  width: 12%;
+}
+
+.logo_ul {
+  display: flex;
+}
+label {
 }
