@@ -2,8 +2,8 @@
   background-color: #ece8d1;
   display: flex;
   flex-wrap: wrap;
-  border-radius: 10px;
-  width: 90%;
+
+  width: 100%;
   overflow: hidden;
   position: absolute;
   top: 40%; /* 부모 요소 중앙 기준으로 위로 50% 이동 */

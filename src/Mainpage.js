@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -52,7 +52,7 @@ const Mainpage = () => {
     }
   }, []); //로컬스토리지가 비어있으면 로그인페이지로 이동
 
-  const checkbox = (event) => {
+  const Checkbox = (event) => {
     const { value, checked } = event.target; //버튼이 눌리면 value 값과 checked여부를 저장
     if (checked) {
       //체크 되었으면 체크필드에 값을 배열로 저장해줌
@@ -60,23 +60,32 @@ const Mainpage = () => {
     } else {
       setcheckfield(checkfield.filter((filter) => filter !== value));
     } //체크 취소하면 해당 배열 제외하고 반환
-
-    axios
-      .get(
-        `http://dowajo.run.goorm.site/api/counselor/field?${params.toString()}`
-      )
-      .then((response) => {
-        console.log(response.data);
-        setFiltered(response.data); //Filtered 에 response.data를 담았음 선택된 value 에 해당하는 배열을 Filtered 에 저장해놓음
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const params = new URLSearchParams();
+        for (let i = 0; i < checkfield.length; i++) {
+          params.append("field", checkfield[i]);
+        }
+
+        const response = await axios.get(
+          `http://dowajo.run.goorm.site/api/counselor/field?${params.toString()}`
+        );
+
+        setFiltered(response.data);
+      } catch (error) {
+        console.log(error);
+        setFiltered(counSelor);
+      }
+    };
+
+    fetchData();
+  }, [checkfield]);
+
   console.log(checkfield);
-  for (let i = 0; i < checkfield.length; i++) {
-    params.append("field", checkfield[i]);
-  } //체크 박스 함수가 실행되고 결과로 나온 체크필드배열의 길이만큼
+
   //빈복문을 돌면서 쿼리에 append 해줌
 
   console.log(params);
@@ -110,7 +119,7 @@ const Mainpage = () => {
           <input
             type="checkbox"
             id="checkbox-a"
-            onChange={(event) => checkbox(event)}
+            onChange={(event) => Checkbox(event)}
             value="학업"
           />
           학업
@@ -119,7 +128,7 @@ const Mainpage = () => {
           <input
             type="checkbox"
             id="checkbox-b"
-            onChange={(event) => checkbox(event)}
+            onChange={(event) => Checkbox(event)}
             value="진로"
           />
           진로
@@ -128,7 +137,7 @@ const Mainpage = () => {
           <input
             type="checkbox"
             id="checkbox-c"
-            onChange={(event) => checkbox(event)}
+            onChange={(event) => Checkbox(event)}
             value="건강"
           />
           건강
@@ -137,7 +146,7 @@ const Mainpage = () => {
           <input
             type="checkbox"
             id="checkbox-d"
-            onChange={(event) => checkbox(event)}
+            onChange={(event) => Checkbox(event)}
             value="심리"
           />
           심리
@@ -146,7 +155,7 @@ const Mainpage = () => {
           <input
             type="checkbox"
             id="checkbox-e"
-            onChange={(event) => checkbox(event)}
+            onChange={(event) => Checkbox(event)}
             value="법률"
           />
           법률
@@ -155,7 +164,7 @@ const Mainpage = () => {
           <input
             type="checkbox"
             id="checkbox-f"
-            onChange={(event) => checkbox(event)}
+            onChange={(event) => Checkbox(event)}
             value="투자"
           />
           투자
@@ -164,7 +173,7 @@ const Mainpage = () => {
           <input
             type="checkbox"
             id="checkbox-f"
-            onChange={(event) => checkbox(event)}
+            onChange={(event) => Checkbox(event)}
             value="기타"
           />
           기타
