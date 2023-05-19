@@ -32,5 +32,8 @@ a {
 .logo_ul {
   display: flex;
 }
-label {
+
+.nav_lg {
+  background: none;
+  border: none;
 }

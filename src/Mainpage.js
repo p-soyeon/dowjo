@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Counselorbox } from "./Counselorbox";
 import "./Mainpage.css";
+
 const main = {
   border: "1px solid black",
   backgroundColor: "grey",
@@ -69,15 +70,17 @@ const Mainpage = () => {
         for (let i = 0; i < checkfield.length; i++) {
           params.append("field", checkfield[i]);
         }
+        if (checkfield.length == 0) {
+          setFiltered(counSelor); //checkfield 의 길이가 0 이면 전체 목록
+        } else {
+          const response = await axios.get(
+            `http://dowajo.run.goorm.site/api/counselor/field?${params.toString()}`
+          );
 
-        const response = await axios.get(
-          `http://dowajo.run.goorm.site/api/counselor/field?${params.toString()}`
-        );
-
-        setFiltered(response.data);
+          setFiltered(response.data);
+        }
       } catch (error) {
         console.log(error);
-        setFiltered(counSelor); //if 문써서 params 없으면 counselor api 호출 .
       }
     };
 
@@ -90,30 +93,8 @@ const Mainpage = () => {
 
   console.log(params);
 
-  const logout = () => {
-    let rftoken = localStorage.getItem("rftoken");
-
-    alert(rftoken);
-    let accessToken = localStorage.getItem("token");
-
-    axios
-      .get("http://dowajo.run.goorm.site/api/logout", {
-        headers: { Authorization: rftoken },
-      })
-      .then((response) => {
-        console.log(response.data);
-        console.log(response.status);
-
-        if (response.status === 200 && response.data == "로그아웃 성공") {
-          window.location.replace("/");
-          localStorage.clear();
-        }
-      });
-  }; //로그아웃 버튼누르면 토큰 지워짐
-
   return (
     <div>
-      <button onClick={logout}>로그아웃</button>
       <div className="category">
         <table>
           <tr>

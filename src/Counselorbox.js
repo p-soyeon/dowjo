@@ -11,6 +11,8 @@ import { useParmas } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./cousellist.css";
+
+
 let rftoken = localStorage.getItem("rftoken");
 let accessToken = localStorage.getItem("token");
 console.log(accessToken);
@@ -30,6 +32,7 @@ export const Counselorbox = ({ counsel }) => {
   //Id 가 변경되면 useEffect 문 실행됨
   return (
     <div key={counsel.id} className="c_box">
+   
       <div className="c_field">
         <span>{counsel.field}</span>
       </div>

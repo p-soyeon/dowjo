@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import jwt from "jwt-decode";
 import jwt_decode from "jwt-decode";
+import Navbar from "./Nav";
 
 const Loginpage = () => {
   const navigate = useNavigate();
@@ -25,7 +26,6 @@ const Loginpage = () => {
   let token;
   let rftoken;
   const Login = async (event) => {
-    // navigate("/Cpage");
     await axios
       .post("https://dowajo.run.goorm.site/api/login", {
         email: Email,
@@ -47,7 +47,7 @@ const Loginpage = () => {
           //  axios.defaults.headers.common["Authorization"] = //
           axios.post();
 
-          navigate("/MyPage1");
+          navigate("/Mainpage");
         } else {
           console.log(response.data);
           alert(" 아이디 또는 비밀번호를 확인하세요");

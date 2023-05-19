@@ -40,6 +40,7 @@ const MyPage1 = () => {
         console.log(error.response);
       });
   }, []);
+
   console.log(decoding);
   //reservelist.sort(function (a, b) {
   // return b.start_time - a.start_time;

@@ -1,0 +1,5 @@
+.react-datepicker {
+}
+.react-datepicker__time-list {
+  flex-direction: column;
+}
