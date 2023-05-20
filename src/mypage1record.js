@@ -8,7 +8,7 @@ export const Record1 = ({ list }) => {
   return (
     <div>
       <div>
-        {list.Counselor.id}.{list.Counselor.name}
+        {list.Counselor.id}.{list.Counselor.name} 상담사님
       </div>
 
       <div>

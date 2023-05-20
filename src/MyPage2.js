@@ -34,13 +34,9 @@ const MyPage1 = () => {
       });
   }, []);
 
-  //reservelist.sort(function (a, b) {
-  // return b.start_time - a.start_time;
-  //});
-
   return (
     <div>
-      {" "}
+      <div>예약갯수</div>{" "}
       {reservelist.map((list) => {
         return <Record2 key={`key-${list.id}`} list={list} />;
       })}

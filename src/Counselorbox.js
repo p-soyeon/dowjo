@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./cousellist.css";
 
-
 let rftoken = localStorage.getItem("rftoken");
 let accessToken = localStorage.getItem("token");
 console.log(accessToken);
@@ -31,19 +30,22 @@ export const Counselorbox = ({ counsel }) => {
   }, [Id]);
   //Id 가 변경되면 useEffect 문 실행됨
   return (
-    <div key={counsel.id} className="c_box">
-   
-      <div className="c_field">
-        <span>{counsel.field}</span>
-      </div>
-      <div className="c_name">
-        <span>{counsel.name}</span>
-      </div>{" "}
-      <div className="c_btn">
-        <button onClick={onSetId} value={counsel.id}>
-          예약
-        </button>
-      </div>
+    <button
+      key={counsel.id}
+      className="c_box"
+      onClick={onSetId}
+      value={counsel.id}
+    >
+      <span>
+        <div className="c_field">
+          <span>
+            <pre>
+              {" "}
+              {counsel.field} {counsel.name}
+            </pre>
+          </span>
+        </div>
+      </span>
       <hr></hr>
       <div className="c_im_in">
         <img
@@ -53,6 +55,6 @@ export const Counselorbox = ({ counsel }) => {
         />
         <span className="c_intro">{counsel.intro}</span>
       </div>
-    </div>
+    </button>
   );
 };

@@ -2,7 +2,7 @@
   background-color: #ece8d1;
   display: flex;
   flex-wrap: wrap;
-  border-radius: 10px;
+  border-radius: 0;
   width: 100%;
   height: 100%;
   overflow-y: auto; /*요소들의 높이가 부모 높이를 넘어서면 scroll 생김*/

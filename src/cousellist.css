@@ -1,4 +1,5 @@
 .c_box {
+  text-align: left;
   border: 1px solid;
   display: inline-block;
   width: 500px;
@@ -12,16 +13,13 @@
 }
 
 .c_field {
-  margin-top: 2%;
   font-size: larger;
   display: inline-block;
-  padding-left: 5%;
 }
 
 .c_name {
   font-size: larger;
   display: inline-block;
-  padding-left: 5%;
 }
 
 .c_intro {

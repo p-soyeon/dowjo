@@ -42,34 +42,34 @@ const MyPage1 = () => {
   }, []);
 
   console.log(decoding);
-  //reservelist.sort(function (a, b) {
-  // return b.start_time - a.start_time;
-  //});
+  // reservelist.sort(function (a, b) {
+  //   return b.id - a.id;
+  // });
+  var today = new Date();
+  const sorteddata = [...reservelist].sort((a, b) => {
+    const timeA = new Date(a.start_time);
+    const timeB = new Date(b.start_time);
+    const diffA = Math.abs(timeA - new Date());
+    const diffB = Math.abs(timeB - new Date());
+    return diffB - diffA;
+  });
+  console.log(sorteddata);
+  const closeDate = null;
 
   return (
     <div>
       <div>
-        내정보:<br></br>
-        회원 아이디 {decoding.id}
+        <div>총 예약내역:{reservelist.length} 건</div> <br></br>
+        {decoding.name}님 안녕하세요<br></br>
+        이메일: {decoding.email}
         <br></br>
-        이름:{decoding.name};<br></br>
-        이메일:{decoding.email};<br></br>
-        닉네임:{decoding.nickname}
+        닉네임: {decoding.nickname}
         <hr></hr>
       </div>
-      {reservelist.map((list) => (
+      {sorteddata.map((list) => (
         <Record1 key={`key-${list.id}`} list={list} />
       ))}
     </div>
   );
 };
 export default MyPage1;
-//console.log(response.data[0].Counselor);
-//console.log(response.data[1].Counselor);
-// for (let i = 0; i < response.data.length; i++) {
-//  setdetail((prevItems) => [
-//   ...prevItems,
-//  response.data[i].Counselor,
-//]);
-// }
-//console.log(detail);
