@@ -25,7 +25,7 @@ export const Counselorbox = ({ counsel }) => {
   useEffect(() => {
     console.log(Id);
     if (Id >= 1) {
-      navigate("/Reserve", { state: { id: Id } });
+      navigate("/Reserve", { state: { id: Id } }); //id 를 넘겨서 해당하는 id 의
     }
   }, [Id]);
   //Id 가 변경되면 useEffect 문 실행됨

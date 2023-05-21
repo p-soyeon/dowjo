@@ -11,10 +11,41 @@ const MyPage1 = () => {
   const accesstoken = localStorage.getItem("token");
   const [reservelist, setreservelist] = useState([]);
   const [detail, setdetail] = useState([]);
+  const refreshtoken = localStorage.getItem("rftoken");
   const decodetoken = jwt_decode(accesstoken);
   console.log(decodetoken);
+  const updatetoken = () => {
+    axios
+      .get("http://dowajo.run.goorm.site/api/updateToken", {
+        headers: {
+          Authorization: refreshtoken,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          console.log("콘솔 업데이트");
 
+          console.log(response.data);
+
+          localStorage.setItem(
+            "token",
+            JSON.stringify(response.data.accessToken)
+          );
+        } else {
+          console.log(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
   useEffect(() => {
+    setInterval(() => {
+      updatetoken();
+      console.log("작업이 실행되었습니다.");
+    }, 90 * 60 * 1000);
+
     setdecoding(decodetoken);
 
     axios
@@ -55,10 +86,19 @@ const MyPage1 = () => {
   });
   console.log(sorteddata);
   const closeDate = null;
-
+  function counselormypagetype() {
+    const type = decoding.type;
+    let result = [];
+    if ((type = "counselor")) {
+      result = [decoding.url, decoding.name, decoding.email, decoding.nick];
+    } else {
+      result = [decoding.name, decoding.email, decoding.nick];
+    }
+  }
   return (
     <div>
       <div>
+        <div>{decoding.type}</div>
         <div>총 예약내역:{reservelist.length} 건</div> <br></br>
         {decoding.name}님 안녕하세요<br></br>
         이메일: {decoding.email}

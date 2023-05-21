@@ -5,8 +5,10 @@ import { useState } from "react";
 import jwt from "jwt-decode";
 import jwt_decode from "jwt-decode";
 import Navbar from "./Nav";
-
-const Loginpage = () => {
+import Mainpage from "./Mainpage";
+import MyPage1 from "./MyPage1";
+import Reserve from "./Reserve";
+const Loginpage = ({ settoken }) => {
   const navigate = useNavigate();
   const [Email, setEmail] = useState("");
   const [PW, setPW] = useState("");
@@ -47,6 +49,7 @@ const Loginpage = () => {
           //  axios.defaults.headers.common["Authorization"] = //
           axios.post();
 
+          settoken(localStorage.getItem("token"));
           navigate("/Mainpage");
         } else {
           console.log(response.data);

@@ -9,16 +9,12 @@ import { BiLogOut } from "react-icons/bi"; //로그아웃
 import { BiLogIn } from "react-icons/bi"; //로그인
 import jwt_decode from "jwt-decode";
 
-const Navbar = () => {
-  const [accessToken, setaccessToken] = useState("");
-  const token = localStorage.getItem("token");
+const Navbar = ({ token }) => {
   //토큰을 가져와서 토큰이 있으면 1번 nav 없으면 2 번 nav
-  useEffect(() => {
-    setaccessToken(token);
-  }, [token]);
+
   return (
     <div>
-      <nav>{accessToken ? <Usernav /> : <Guestnav />}</nav>
+      <nav>{token ? <Usernav /> : <Guestnav />}</nav>
     </div>
   );
 };
@@ -31,8 +27,9 @@ function Usernav() {
     let accessToken = localStorage.getItem("token");
 
     axios
-      .get("http://dowajo.run.goorm.site/api/logout", {
+      .get("https://dowajo.run.goorm.site/api/logout", {
         headers: { Authorization: rftoken },
+        "Content-Type": "application/json",
       })
       .then((response) => {
         console.log(response.data);
@@ -42,6 +39,9 @@ function Usernav() {
           window.location.replace("/");
           localStorage.clear();
         }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }; //로그아웃 버튼누르면 토큰 지워짐
 
@@ -63,21 +63,17 @@ function Usernav() {
         <img
           className="logo_img"
           alt="logo_img"
-          src={"http://dowajo.run.goorm.site/img/logo.png"}
+          src={"http://dowajo.run.goorm.site/img/white_logo.png"}
         />
       </li>
-      {decoding.name} 님
-      <button className="nav_lg">
-        <BsPersonLinesFill
-          className="user"
-          size="50"
-          /*color=" "*/ onClick={mypage}
-        />
-      </button>
-      <div></div>
+
       <li>
         {" "}
-        <button className="nav_lg" onClick={logout}>
+        {decoding.name} 님<div></div>
+        <button className="btnicon">
+          <BsPersonLinesFill size="50" /*color=" "*/ onClick={mypage} />
+        </button>{" "}
+        <button onClick={logout} className="btnicon">
           <BiLogOut size="50"></BiLogOut>
         </button>
       </li>
@@ -100,17 +96,14 @@ function Guestnav() {
         <img
           className="logo_img"
           alt="logo_img"
-          src={"http://dowajo.run.goorm.site/img/logo.png"}
+          src={"http://dowajo.run.goorm.site/img/white_logo.png"}
         />
       </li>
-      <button className="nav_lg">회원가입</button>
+      <button className="nav_lg" onClick={Register}>
+        회원가입
+      </button>
       <div></div>
-      <li>
-        {" "}
-        <button className="nav_lg" onClick={Register}>
-          <BiLogOut size="50"></BiLogOut>
-        </button>
-      </li>
+      <li> </li>
     </ul>
   );
 }

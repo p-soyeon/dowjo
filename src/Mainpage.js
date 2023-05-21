@@ -33,9 +33,45 @@ const Mainpage = () => {
   const [checkfield, setcheckfield] = useState([]); //checkbox 를 체크하면 해당 feild가 쿼리로 전해짐
   const [filtered, setFiltered] = useState([]); //백엔드에서 필터링되어 반환된 데이터를 담음
   const accesstoken = localStorage.getItem("token");
+  const refreshtoken = localStorage.getItem("rftoken");
   //  settoken(accesstoken);
+  const [newtoken, setnewtoken] = useState("");
+  const updatetoken = () => {
+    axios
+      .get("http://dowajo.run.goorm.site/api/updateToken", {
+        headers: {
+          Authorization: refreshtoken,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          console.log("콘솔 업데이트");
+
+          console.log(response.data);
+
+          localStorage.setItem(
+            "token",
+            JSON.stringify(response.data.accessToken)
+          );
+        } else {
+          console.log(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
 
   useEffect(() => {
+    if (token != null) {
+      //accesstoken 업데이트
+      setInterval(() => {
+        updatetoken();
+        console.log("작업이 실행되었습니다.");
+      }, 90 * 60 * 1000);
+    }
+
     //서버에서 모든 상담사 목록 get
     if (localStorage.getItem("rftoken") === null) {
       window.location.replace("/");

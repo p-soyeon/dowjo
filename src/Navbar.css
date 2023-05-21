@@ -1,39 +1,63 @@
-nav {
+.nav {
   background-color: #fff;
-
-  display: flex;
-  justify-content: space-between;
+  position: relative;
+  margin: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 ul {
+  padding: 0;
   list-style: none;
   display: flex;
+  justify-content: space-between;
+  margin: 0;
 }
-
 a {
   color: #333;
-
   text-decoration: none;
   font-size: 1.2rem;
 }
 .lg_ul {
   height: 20px;
-
   justify-content: flex-start;
   align-items: center;
 }
 .lg {
   width: 100px;
 }
+
 .logo_img {
-  width: 12%;
+  width: 50%;
+  float: left;
 }
 
 .logo_ul {
   display: flex;
 }
-
 .nav_lg {
+  height: 20px;
+  border-radius: 4px;
+  margin: 20px;
+  border: none;
+
+  background-color: rgba(173, 173, 173, 0.676);
+
+  /* 상자 디자인 큰틀*/
+
+  border: 0px;
+  background-color: #e4ebf5;
+
+  /* 글씨 */
+  color: #333333;
+
+  font-weight: bold;
+
+  animation-duration: 0.2s;
+}
+.btnicon {
   background: none;
   border: none;
 }

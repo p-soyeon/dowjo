@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import CRegister from "./CRegister";
 import Select from "./Select";
 import Mainpage from "./Mainpage";
-
+import Videoroom from "./videoroom";
 import Reserve from "./Reserve";
 import Loginpage from "./Loginpage";
 import MyPage2 from "./MyPage2";
@@ -16,15 +16,20 @@ import Nav from "./Nav";
 function App() {
   const [Counselor, setCounselor] = useState();
   const [Id, setId] = useState("");
+  const [token, settoken] = useState("");
   return (
     <BrowserRouter>
       <div className="App">
-        <Nav></Nav>
+        <Nav token={token}></Nav>
         <Routes>
           <Route
             path="/"
             element={
-              <Loginpage Counselor={Counselor} setCounselor={setCounselor} />
+              <Loginpage
+                Counselor={Counselor}
+                setCounselor={setCounselor}
+                settoken={settoken}
+              />
             }
           ></Route>
           <Route path="/UserRegister" element={<UserRegister />}></Route>
@@ -35,6 +40,7 @@ function App() {
           <Route path="/Upage" element={<Upage />}></Route>
           <Route path="/Cpage" element={<Cpage />}></Route>
           <Route path="/Reserve" element={<Reserve />}></Route>
+          <Route path="/Videoroom" element={<Videoroom />}></Route>
           <Route path="/Select" element={<Select />}></Route>
           <Route path="/Net" element={<Net />}></Route>
         </Routes>
