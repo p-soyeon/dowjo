@@ -25,14 +25,19 @@ export const Record1 = ({ list }) => {
   console.log(decoding);
 
   const entrance = (event) => {
-    setResereveID(event.currentTarget.value);
-    navigate("/videoroom", {
+    //ReserveId = event.currentTarget.value;
+    window.location.href = `/videoroom?id=${
+      event.currentTarget.value
+    }&name=${encodeURIComponent(decoding.name)}&token=${encodeURIComponent(
+      localStorage.getItem("token")
+    )}`;
+    /*navigate("/videoroom", {
       state: {
         id: event.currentTarget.value,
         name: decoding.name,
         token: localStorage.getItem("token"),
       },
-    });
+    });*/
   };
 
   return (

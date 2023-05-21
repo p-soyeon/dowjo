@@ -24,6 +24,8 @@
     "react-time-picker": "^6.0.4",
     "recoil-persist": "^4.2.0",
     "redux": "^4.2.1",
+    "sass": "^1.62.1",
+    "socket.io-client": "^4.6.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

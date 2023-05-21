@@ -8,7 +8,7 @@ const UserRegister = () => {
     //navigate("/Upage");
     await axios
       .post("https://dowajo.run.goorm.site/api/user/register", {
-        id: Email,
+        email: Email,
         pwd: PW,
         name: Name,
         nickname: Nickname,

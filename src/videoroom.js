@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"; /*
+import { useLocation } from "react-router-dom";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { io } from "socket.io-client";
 import ChatTemplate from "./components/ChatTemplate";
@@ -9,34 +9,35 @@ import VideoCallTemplate from "./components/VideoCallTemplate";
 import SettingBar from "./components/SettingBar";
 import Videos from "./components/Videos";
 
-*/
+import { useParams } from "react-router-dom";
+const searchParams = new URLSearchParams(window.location.search);
+const id = searchParams.get("id");
+const name = searchParams.get("name");
+//const token = searchParams.get("token");
+
+const token = localStorage.getItem("token");
+const accessToken1 = { token };
+const accessToken = accessToken1.token;
+const myname1 = { name };
+const myname = JSON.stringify(myname1);
+const roomId1 = { id };
+const roomId = JSON.stringify(roomId1);
+console.log(typeof accessToken);
+console.log(typeof myname);
+console.log(typeof roomId);
+console.log(accessToken);
+
+const socket = io("https://dowajo.run.goorm.site", {
+  auth: {
+    Authorization: accessToken,
+  },
+});
 
 function Videoroom() {
-  const location = useLocation();
-  const state = location.state;
-  const id = state.id;
-  const name = state.name;
-  const token = state.token;
-  console.log(name);
-  console.log(id);
-  console.log(token);
-  const accessToken = token;
-  const myname = name;
-  const roomId = id;
-
-  //const socket = io("https://dowajo.run.goorm.site", {
-  //  auth: {
-  //   Authorization: accessToken,
-  // },
-  //});
-
-  return (
-    <div>
-      예약번호:{id} 토큰:{accessToken}
-      // roomId= {roomId}
-    </div>
-  );
-  /*const [messages, setMessages] = useState([]);
+  console.log(typeof accessToken);
+  console.log(typeof myname);
+  console.log(typeof roomId);
+  const [messages, setMessages] = useState([]);
 
   const [settings, setSettings] = useState({
     mikeOn: true,
@@ -283,7 +284,7 @@ function Videoroom() {
         <TextInput sendMessage={sendMessage} />
       </ChatTemplate>
     </Overlay>
-  );*/
+  );
 }
 
 export default Videoroom;
