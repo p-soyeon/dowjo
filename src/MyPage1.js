@@ -96,19 +96,33 @@ const MyPage1 = () => {
     }
   }
   return (
-    <div>
-      <div>
-        <div>{decoding.type}</div>
-        <div>총 예약내역:{reservelist.length} 건</div> <br></br>
-        {decoding.name}님 안녕하세요<br></br>
-        이메일: {decoding.email}
-        <br></br>
-        닉네임: {decoding.nickname}
-        <hr></hr>
+    <div className="entire">
+      <div className="myInfo">
+        <h3>내 정보</h3>
+        <table>
+          <tr>
+            <td> 성명</td>
+            <td>{decoding.name}</td>
+          </tr>
+          <tr>
+            <td>이메일</td>
+            <td>{decoding.email}</td>
+          </tr>
+          <tr>
+            <td>닉네임</td>
+            <td>{decoding.nickname}</td>
+          </tr>
+        </table>
       </div>
-      {sorteddata.map((list) => (
-        <Record1 key={`key-${list.id}`} list={list} />
-      ))}
+      <div className="bg">
+        <h3>상담 예약 목록</h3>
+        <h5>총 예약내역: {reservelist.length} 건</h5> <br></br>
+        <div className="Reserlist">
+          {sorteddata.map((list) => (
+            <Record1 key={`key-${list.id}`} list={list} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

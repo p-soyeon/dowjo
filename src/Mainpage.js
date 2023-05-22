@@ -35,7 +35,7 @@ const Mainpage = () => {
   const accesstoken = localStorage.getItem("token");
   const refreshtoken = localStorage.getItem("rftoken");
   //  settoken(accesstoken);
-  const [newtoken, setnewtoken] = useState("");
+
   const updatetoken = () => {
     axios
       .get("http://dowajo.run.goorm.site/api/updateToken", {
@@ -64,13 +64,11 @@ const Mainpage = () => {
   };
 
   useEffect(() => {
-    if (token != null) {
-      //accesstoken 업데이트
-      setInterval(() => {
-        updatetoken();
-        console.log("작업이 실행되었습니다.");
-      }, 90 * 60 * 1000);
-    }
+    //accesstoken 업데이트
+    setInterval(() => {
+      updatetoken();
+      console.log("작업이 실행되었습니다.");
+    }, 90 * 60 * 1000);
 
     //서버에서 모든 상담사 목록 get
     if (localStorage.getItem("rftoken") === null) {
@@ -131,6 +129,11 @@ const Mainpage = () => {
 
   return (
     <div>
+      <div className="banner">
+        <br></br>
+        <h2 className="dowajo">dowajo</h2>
+        <p1 className="explain">다양한분야의 상담사들을 한곳에서 만나보세요</p1>
+      </div>
       <div className="category">
         <table>
           <tr>

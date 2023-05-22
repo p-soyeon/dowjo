@@ -9,16 +9,20 @@ import { BiLogOut } from "react-icons/bi"; //로그아웃
 import { BiLogIn } from "react-icons/bi"; //로그인
 import jwt_decode from "jwt-decode";
 
-const Navbar = ({ token }) => {
+const Navbar = ({ token, settoken }) => {
   //토큰을 가져와서 토큰이 있으면 1번 nav 없으면 2 번 nav
-
+  const navigate = useNavigate();
   return (
-    <div>
+    <div className="navv">
       <nav>{token ? <Usernav /> : <Guestnav />}</nav>
     </div>
   );
 };
 function Usernav() {
+  const Home = () => {
+    navigate("./Mainpage");
+  };
+
   //로그인 이후 nav바
   const logout = () => {
     let rftoken = localStorage.getItem("rftoken");
@@ -60,14 +64,16 @@ function Usernav() {
     <ul>
       <li className="logo_ul">
         {" "}
-        <img
-          className="logo_img"
-          alt="logo_img"
-          src={"http://dowajo.run.goorm.site/img/white_logo.png"}
-        />
+        <button onClick={Home}>
+          <img
+            className="logo_img"
+            alt="logo_img"
+            src={"http://dowajo.run.goorm.site/img/white_logo.png"}
+          />
+        </button>
       </li>
 
-      <li>
+      <li className="blank">
         {" "}
         {decoding.name} 님<div></div>
         <button className="btnicon">
@@ -93,11 +99,13 @@ function Guestnav() {
     <ul>
       <li className="logo_ul">
         {" "}
-        <img
-          className="logo_img"
-          alt="logo_img"
-          src={"http://dowajo.run.goorm.site/img/white_logo.png"}
-        />
+        <button className="blank" onClick={Loginpage}>
+          <img
+            className="logo_img"
+            alt="logo_img"
+            src={"http://dowajo.run.goorm.site/img/white_logo.png"}
+          />
+        </button>
       </li>
       <button className="nav_lg" onClick={Register}>
         회원가입

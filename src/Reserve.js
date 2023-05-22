@@ -47,8 +47,7 @@ const Reserve = ({}) => {
 
   const accesstoken = localStorage.getItem("token");
   const navigate = useNavigate();
-  const location = useLocation();
-
+  const location = useLocation(); //mypage 에서 넘어온 id 받기
   const id = location.state.id;
   useEffect(() => {
     //accesstoken 업데이트

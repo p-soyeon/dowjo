@@ -7,10 +7,12 @@ import { useEffect } from "react";
 export const Record1 = ({ list }) => {
   const navigate = useNavigate();
   const utctime = new Date(list.start_time);
+  const date = new Date(list.start_time);
   const year = utctime.getFullYear();
   const month = utctime.getMonth() + 1;
   const day = utctime.getDate();
   const hours = utctime.getHours();
+  const minutes = date.getMinutes().toString().padStart(2, "0"); // padStart()를 사용하여 두 자리 수로 맞춥니다.
   const [ReserveId, setResereveID] = useState("");
   const [decoding, setdecoding] = useState([]);
   const [token, accesttoken] = useState("");
@@ -30,7 +32,7 @@ export const Record1 = ({ list }) => {
       event.currentTarget.value
     }&name=${encodeURIComponent(decoding.name)}&token=${encodeURIComponent(
       localStorage.getItem("token")
-    )}`;
+    )}&counselorId=${event.currentTarget.name}`;
     /*navigate("/videoroom", {
       state: {
         id: event.currentTarget.value,
@@ -42,19 +44,15 @@ export const Record1 = ({ list }) => {
 
   return (
     <div>
-      <div>
-        {" "}
-        이름 : {list.id} // 예약id {list.id} 상담사 id:
-        {list.Counselor.id}.{list.Counselor.name} 상담사님
+      <div className="ReserComp">
+        {list.Counselor.name} 상담사님<br></br> 상담 예약 시간:<br></br> {month}
+        월 {day}일<br></br>
+        {hours}:{minutes} ~ {hours + 1}:{minutes}
+        <br></br>
+        <button value={list.id} name={list.Counselor.name} onClick={entrance}>
+          입장
+        </button>
       </div>
-
-      <div>
-        예약시간:{year}년 {month}월 {day}일 {hours} 시
-      </div>
-      <button value={list.id} onClick={entrance}>
-        {" "}
-        입장{" "}
-      </button>
     </div>
   );
 };

@@ -17,6 +17,14 @@ function App() {
   const [Counselor, setCounselor] = useState();
   const [Id, setId] = useState("");
   const [token, settoken] = useState("");
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 로컬 스토리지에서 토큰을 가져와서 상태에 설정
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      settoken(storedToken);
+    }
+  }, []);
   return (
     <BrowserRouter>
       <div className="App">
@@ -43,6 +51,7 @@ function App() {
           <Route path="/Videoroom" element={<Videoroom />}></Route>
           <Route path="/Select" element={<Select />}></Route>
           <Route path="/Net" element={<Net />}></Route>
+          <Route path="/Nav" element={<Nav settoken={settoken} />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

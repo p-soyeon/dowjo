@@ -11,15 +11,18 @@ import Videos from "./components/Videos";
 
 import { useParams } from "react-router-dom";
 const searchParams = new URLSearchParams(window.location.search);
-const id = searchParams.get("id");
+const list = searchParams.get("list");
 const name = searchParams.get("name");
+const id = searchParams.get("id");
+const cname = searchParams.get("counselorId");
+
 //const token = searchParams.get("token");
 
 const token = localStorage.getItem("token");
 const accessToken1 = { token };
 const accessToken = accessToken1.token;
 const myname1 = { name };
-const myname = JSON.stringify(myname1);
+const myname = myname1;
 const roomId1 = { id };
 const roomId = JSON.stringify(roomId1);
 console.log(typeof accessToken);
@@ -50,6 +53,7 @@ function Videoroom() {
   const remoteVideoRef = useRef();
   const peerRef = useRef();
   const sender = useRef();
+  const sentJoin = useRef(false);
 
   //세팅바 변경 이벤트
   const changeSettings = useCallback(
@@ -118,6 +122,7 @@ function Videoroom() {
       }
 
       // 스트림을 peerConnection에 등록
+      console.log(peerRef.current.addTrack);
       stream.getTracks().forEach((track) => {
         if (!peerRef.current) {
           return;
@@ -129,6 +134,7 @@ function Videoroom() {
       peerRef.current.onicecandidate = (e) => {
         if (e.candidate) {
           if (!socket) {
+            console.log("소켓이 없습니다.");
             return;
           }
           console.log("recv candidate");
@@ -138,6 +144,7 @@ function Videoroom() {
 
       // 구 addStream 현 track 이벤트
       peerRef.current.ontrack = (e) => {
+        console.log(e.streams);
         if (remoteVideoRef.current) {
           remoteVideoRef.current.srcObject = e.streams[0];
         }
@@ -145,7 +152,12 @@ function Videoroom() {
     } catch (e) {
       console.error(e);
     }
+    if (!sentJoin.current) {
+      socket.emit("join_room", roomId);
+      sentJoin.current = true;
+    }
   };
+
   //webRTC 오퍼 생성
   const createOffer = async () => {
     console.log("create Offer");
@@ -183,7 +195,6 @@ function Videoroom() {
   useEffect(() => {
     function onConnect() {
       console.log("소켓 연결 성공");
-      socket.emit("join_room", roomId);
     }
     function onConnectError(err) {
       console.log(err);
@@ -226,15 +237,19 @@ function Videoroom() {
     }
 
     function onGetAnswer(sdp) {
-      console.log("recieve Answer");
-      if (!peerRef.current) {
-        return;
+      try {
+        console.log("recieve Answer");
+        if (!peerRef.current) {
+          return;
+        }
+        console.log("setRemote 시작");
+        peerRef.current.setRemoteDescription(sdp);
+      } catch (err) {
+        console.error(err);
       }
-      console.log("setRemote 시작");
-      peerRef.current.setRemoteDescription(sdp);
     }
 
-    async function onGetIce(ice) {
+    function onGetIce(ice) {
       console.log("ice 받음");
       if (!peerRef.current) {
         return;
@@ -249,22 +264,33 @@ function Videoroom() {
     peerRef.current = new RTCPeerConnection({
       iceServers: [
         {
-          urls: "stun:stun.l.google.com:19302",
+          urls: [
+            "stun:stun.l.google.com:19302",
+            "stun:stun1.l.google.com:19302",
+            "stun:stun2.l.google.com:19302",
+            "stun:stun3.l.google.com:19302",
+            "stun:stun4.l.google.com:19302",
+          ],
         },
       ],
     });
-
-    getMedia();
+    function onClose() {
+      peerRef.current.close();
+    }
     socket.on("getOffer", onGetOffer);
     socket.on("getAnswer", onGetAnswer);
     socket.on("getIce", onGetIce);
     socket.on("newClient", onNewClient);
+    window.addEventListener("beforeunload", onClose);
+    getMedia();
+
     return () => {
       socket.off("getOffer", onGetOffer);
       socket.off("getAnswer", onGetAnswer);
       socket.off("getIce", onGetIce);
       socket.off("newClient", onNewClient);
       peerRef.current.close();
+      window.removeEventListener("beforeunload", onClose);
     };
   }, []);
 
@@ -276,6 +302,8 @@ function Videoroom() {
           remoteVideoRef={remoteVideoRef}
           myMic={settings.mikeOn}
           oppMic={true}
+          myname={myname}
+          cname={cname} // 해당 유저이름
         />
         <SettingBar settings={settings} changeSettings={changeSettings} />
       </VideoCallTemplate>

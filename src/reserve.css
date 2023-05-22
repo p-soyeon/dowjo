@@ -3,3 +3,19 @@
 .react-datepicker__time-list {
   flex-direction: column;
 }
+.intro {
+  text-align: left;
+  border: 1px solid;
+  display: inline-block;
+
+  background-color: white;
+  border: none;
+  margin: 1%;
+  border-radius: 3%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 1%;
+}
+
+.entire {
+  justify-content: center;
+}

@@ -36,13 +36,14 @@ a {
 
 .logo_ul {
   display: flex;
+  cursor: pointer;
 }
 .nav_lg {
   height: 20px;
   border-radius: 4px;
   margin: 20px;
   border: none;
-
+  margin-left: auto;
   background-color: rgba(173, 173, 173, 0.676);
 
   /* 상자 디자인 큰틀*/
@@ -60,4 +61,15 @@ a {
 .btnicon {
   background: none;
   border: none;
+  cursor: pointer;
+}
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.blank {
+  width: calc(100% - 850px); /* 양옆의 콘텐츠 너비를 제외한 나머지 공간 */
+  margin: 0 50px; /* 양옆의 콘텐츠에 대한 마진 설정 */
 }
