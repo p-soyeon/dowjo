@@ -14,7 +14,7 @@ import { Counselorbox } from "./Counselorbox";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-// import { utcToZonedTime } from "date-fns-tz";
+
 const refreshtoken = localStorage.getItem("rftoken");
 const accesstoken = localStorage.getItem("token");
 const Reserve = ({}) => {
@@ -109,16 +109,13 @@ const Reserve = ({}) => {
     const month = startDate.getMonth() + 1;
     const day = startDate.getDate();
     const utcTime = startDate;
-    const krtime = format(
-      utcToZonedTime(new Date(utcTime), "Asia/Seoul"),
-      "yyyy-MM-dd HH:mm:ss"
-    );
+
     axios
       .post(
         "https://dowajo.run.goorm.site/api/reservation",
         {
           counselor_id: id,
-          start_time: krtime, // literal 로 getyear()-getmonth()-gettime()
+          start_time: utcTime, // literal 로 getyear()-getmonth()-gettime()
         },
         {
           headers: {
