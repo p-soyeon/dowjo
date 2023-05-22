@@ -1,27 +1,13 @@
 .mainp {
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 900px;
   background: #ffffff;
-  border: 1px solid #000000;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 0;
   margin: 0px;
   padding: 100px;
-
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-}
-body {
-  background-color: rgb(174, 197, 170);
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
 }
 
 h2 {

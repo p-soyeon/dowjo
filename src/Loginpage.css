@@ -5,14 +5,13 @@
 
 .loginp {
   display: flex; /* div 요소를 flex 컨테이너로 설정 */
-  justify-content: center; /* 가로 방향 가운데 정렬 */
+  justify-content: flex-end; /* 가로 방향 가운데 정렬 */
   align-items: center; /* 세로 방향 가운데 정렬 */
-
-  position: absolute;
+  margin-top: 200px;
+  position: relative;
   background-color: rgb(174, 197, 170);
   right: 0%;
-  width: 50%;
-  height: 100%;
+  width: 100%;
 
   background: #ffffff;
 
@@ -53,6 +52,7 @@
 }
 td {
   white-space: nowrap;
+  padding: 2px;
 }
 .rg {
   height: 20px;
@@ -83,14 +83,14 @@ td {
 }
 .box1 {
   border: 0;
-  width: 100%;
+  width: 150px;
   outline: none;
   font-size: medium;
   background-color: rgb(233, 233, 233);
 }
 .box2 {
   border: 0;
-  width: 100%;
+  width: 150px;
   outline: none;
   font-size: medium;
   background-color: rgb(233, 233, 233);

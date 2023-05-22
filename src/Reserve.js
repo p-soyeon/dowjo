@@ -14,15 +14,49 @@ import { Counselorbox } from "./Counselorbox";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-import { utcToZonedTime } from "date-fns-tz";
-
+// import { utcToZonedTime } from "date-fns-tz";
+const refreshtoken = localStorage.getItem("rftoken");
+const accesstoken = localStorage.getItem("token");
 const Reserve = ({}) => {
+  const updatetoken = () => {
+    axios
+      .get("http://dowajo.run.goorm.site/api/updateToken", {
+        headers: {
+          Authorization: refreshtoken,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          console.log("콘솔 업데이트");
+
+          console.log(response.data);
+
+          localStorage.setItem(
+            "token",
+            JSON.stringify(response.data.accessToken)
+          );
+        } else {
+          console.log(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
   const accesstoken = localStorage.getItem("token");
   const navigate = useNavigate();
   const location = useLocation();
 
   const id = location.state.id;
   useEffect(() => {
+    //accesstoken 업데이트
+    setInterval(() => {
+      updatetoken();
+      console.log("작업이 실행되었습니다.");
+    }, 90 * 60 * 1000);
+
     console.log(id);
   });
 
@@ -81,7 +115,7 @@ const Reserve = ({}) => {
     );
     axios
       .post(
-        "http://dowajo.run.goorm.site/api/reservation",
+        "https://dowajo.run.goorm.site/api/reservation",
         {
           counselor_id: id,
           start_time: krtime, // literal 로 getyear()-getmonth()-gettime()
@@ -113,11 +147,12 @@ const Reserve = ({}) => {
     return hours < 0 || (hours > 8 && hours < 19);
   };
   return (
-    <div>
-      <div>상담사 id: {id}</div>
-
-      <div>{intro}y</div>
-      <div>{name}</div>
+    <div className="entire">
+      <div className="intro">
+        {name}
+        <br></br>
+        {intro}
+      </div>
       <div>
         <DatePicker
           selected={startDate}
@@ -138,4 +173,3 @@ const Reserve = ({}) => {
   );
 };
 export default Reserve;
-//DB에 시간 넣고 실행해보기

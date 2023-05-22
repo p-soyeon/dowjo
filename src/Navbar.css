@@ -1,39 +1,81 @@
-nav {
+.nav {
   background-color: #fff;
-
-  display: flex;
+  position: relative;
+  margin: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   justify-content: space-between;
 }
-
+.blank {
+  width: calc(100% - 850px); /* 양옆의 콘텐츠 너비를 제외한 나머지 공간 */
+  margin: 0 50px; /* 양옆의 콘텐츠에 대한 마진 설정 */
+}
 ul {
+  padding: 0;
   list-style: none;
   display: flex;
-}
 
+  align-items: center; /* 아이템을 세로 방향 가운데 정렬 */
+  margin: 0;
+}
 a {
   color: #333;
-
   text-decoration: none;
   font-size: 1.2rem;
 }
 .lg_ul {
   height: 20px;
-
   justify-content: flex-start;
   align-items: center;
 }
 .lg {
   width: 100px;
 }
+
 .logo_img {
-  width: 12%;
+  width: 50%;
+  float: left;
+  margin-left: 50px;
 }
 
 .logo_ul {
   display: flex;
 }
-
 .nav_lg {
+  height: 20px;
+  border-radius: 4px;
+  margin: 20px;
+  border: none;
+
+  background-color: rgba(173, 173, 173, 0.676);
+
+  /* 상자 디자인 큰틀*/
+
+  border: 0px;
+  background-color: #e4ebf5;
+
+  /* 글씨 */
+  color: #333333;
+
+  font-weight: bold;
+
+  animation-duration: 0.2s;
+}
+.btnicon {
   background: none;
   border: none;
+}
+
+/*버튼 눌리는 효과*/
+.nav_lg:active {
+  box-shadow: inset -0.3rem -0.1rem 1.4rem #fbfbfb,
+    inset 0.3rem 0.4rem 0.8rem #bec5d0;
+  cursor: pointer;
+}
+.logobtn {
+  background: none;
+  border: none;
+  cursor: pointer;
 }

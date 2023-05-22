@@ -12,6 +12,11 @@
   padding: 1%;
 }
 
+.c_box:hover {
+  background-color: rgb(190, 210, 178);
+
+  cursor: pointer;
+}
 .c_field {
   font-size: larger;
   display: inline-block;
@@ -39,7 +44,7 @@
   border-radius: 50%;
   margin-left: 5%;
   height: 100px;
-  object-fit: contain;
+  object-fit: cover;
 }
 .c_im_in {
   display: inline-flex;
