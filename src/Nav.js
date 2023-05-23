@@ -58,7 +58,7 @@ const Navbar = () => {
             <img
               className="logo_img"
               alt="logo_img"
-              src={"http://dowajo.run.goorm.site/img/white_logo.png"}
+              src={require("./logo.png")}
             />
           </Link>
         </li>{" "}

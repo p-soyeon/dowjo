@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import { ko } from "date-fns/esm/locale";
 import { Counselorbox } from "./Counselorbox";
 import DatePicker from "react-datepicker";
+import Navbar from "./Nav";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import Nav from "./Nav";
@@ -144,29 +145,31 @@ const Reserve = ({}) => {
     return hours < 0 || (hours > 8 && hours < 19);
   };
   return (
-    <div className="entire">
-      <Nav token={accesstoken}></Nav>
-      <div className="intro">
-        {name}
-        <br></br>
-        {intro}
-      </div>
-      <div>
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          showTimeSelect
-          timeFormat="HH:mm"
-          timeIntervals={60}
-          timeCaption="time"
-          //minDate={new Date()}
-          dateFormat="MMMM d, yyyy h:mm aa"
-          excludeTimes={parseddate}
-          filterTime={filterTimes}
-          inline
-        />{" "}
-      </div>
-      <button onClick={submit}>제출</button>
+    <div>
+      <Navbar />
+      <div className="entire">
+        <div className="intro">
+          {name}
+          <br></br>
+          {intro}
+        </div>
+        <div>
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={60}
+            timeCaption="time"
+            //minDate={new Date()}
+            dateFormat="MMMM d, yyyy h:mm aa"
+            excludeTimes={parseddate}
+            filterTime={filterTimes}
+            inline
+          />{" "}
+        </div>
+        <button onClick={submit}>제출</button>
+      </div>{" "}
     </div>
   );
 };

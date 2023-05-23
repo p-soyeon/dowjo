@@ -51,7 +51,6 @@ function App() {
           <Route path="/Videoroom" element={<Videoroom />}></Route>
           <Route path="/Select" element={<Select />}></Route>
           <Route path="/Net" element={<Net />}></Route>
-          <Route path="/Nav" element={<Nav settoken={settoken} />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

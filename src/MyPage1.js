@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Record1 } from "./mypage1record.js";
 import jwt_decode from "jwt-decode";
-import Nav from "./Nav";
+import Navbar from "./Nav";
 import "./mypage1.css";
 const MyPage1 = () => {
   const navigate = useNavigate();
@@ -97,32 +97,35 @@ const MyPage1 = () => {
     }
   }
   return (
-    <div className="entire">
-      <Nav token={accesstoken}></Nav>
-      <div className="myInfo">
-        <h3>내 정보</h3>
-        <table>
-          <tr>
-            <td> 성명</td>
-            <td>{decoding.name}</td>
-          </tr>
-          <tr>
-            <td>이메일</td>
-            <td>{decoding.email}</td>
-          </tr>
-          <tr>
-            <td>닉네임</td>
-            <td>{decoding.nickname}</td>
-          </tr>
-        </table>
-      </div>
-      <div className="bg">
-        <h3>상담 예약 목록</h3>
-        <h5>총 예약내역: {reservelist.length} 건</h5> <br></br>
-        <div className="Reserlist">
-          {sorteddata.map((list) => (
-            <Record1 key={`key-${list.id}`} list={list} />
-          ))}
+    <div>
+      <Navbar />
+
+      <div className="entire">
+        <div className="myInfo">
+          <h3>내 정보</h3>
+          <table>
+            <tr>
+              <td> 성명</td>
+              <td>{decoding.name}</td>
+            </tr>
+            <tr>
+              <td>이메일</td>
+              <td>{decoding.email}</td>
+            </tr>
+            <tr>
+              <td>닉네임</td>
+              <td>{decoding.nickname}</td>
+            </tr>
+          </table>
+        </div>
+        <div className="bg">
+          <h3>상담 예약 목록</h3>
+          <h5>총 예약내역: {reservelist.length} 건</h5> <br></br>
+          <div className="Reserlist">
+            {sorteddata.map((list) => (
+              <Record1 key={`key-${list.id}`} list={list} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
