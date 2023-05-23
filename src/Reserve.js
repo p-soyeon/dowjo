@@ -14,7 +14,7 @@ import { Counselorbox } from "./Counselorbox";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-
+import Nav from "./Nav";
 const refreshtoken = localStorage.getItem("rftoken");
 const accesstoken = localStorage.getItem("token");
 const Reserve = ({}) => {
@@ -145,6 +145,7 @@ const Reserve = ({}) => {
   };
   return (
     <div className="entire">
+      <Nav token={accesstoken}></Nav>
       <div className="intro">
         {name}
         <br></br>

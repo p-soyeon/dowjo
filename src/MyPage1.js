@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Record1 } from "./mypage1record.js";
 import jwt_decode from "jwt-decode";
+import Nav from "./Nav";
 import "./mypage1.css";
 const MyPage1 = () => {
   const navigate = useNavigate();
@@ -97,6 +98,7 @@ const MyPage1 = () => {
   }
   return (
     <div className="entire">
+      <Nav token={accesstoken}></Nav>
       <div className="myInfo">
         <h3>내 정보</h3>
         <table>

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Counselorbox } from "./Counselorbox";
 import "./Mainpage.css";
-
+import Nav from "./Nav";
 const main = {
   border: "1px solid black",
   backgroundColor: "grey",
@@ -131,6 +131,8 @@ const Mainpage = () => {
 
   return (
     <div>
+      {" "}
+      <Nav token={token}></Nav>
       <div className="category">
         <table>
           <tr>

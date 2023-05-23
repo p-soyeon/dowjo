@@ -29,7 +29,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Nav token={token}></Nav>
         <Routes>
           <Route
             path="/"
