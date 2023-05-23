@@ -15,7 +15,9 @@ const list = searchParams.get("list");
 const name = searchParams.get("name");
 const id = searchParams.get("id");
 const cname = searchParams.get("counselorId");
-
+const uname = searchParams.get("UserId");
+console.log(cname);
+console.log(uname);
 //const token = searchParams.get("token");
 
 const token = localStorage.getItem("token");
@@ -303,7 +305,8 @@ function Videoroom() {
           myMic={settings.mikeOn}
           oppMic={true}
           myname={myname}
-          cname={cname} // 해당 유저이름
+          cname={cname}
+          uname={uname} // 해당 유저이름
         />
         <SettingBar settings={settings} changeSettings={changeSettings} />
       </VideoCallTemplate>

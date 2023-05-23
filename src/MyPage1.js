@@ -8,6 +8,7 @@ import Navbar from "./Nav";
 import "./mypage1.css";
 const MyPage1 = () => {
   const navigate = useNavigate();
+
   const [decoding, setdecoding] = useState([]);
   const accesstoken = localStorage.getItem("token");
   const [reservelist, setreservelist] = useState([]);
@@ -15,6 +16,7 @@ const MyPage1 = () => {
   const refreshtoken = localStorage.getItem("rftoken");
   const decodetoken = jwt_decode(accesstoken);
   console.log(decodetoken);
+  console.log(accesstoken);
   const updatetoken = () => {
     axios
       .get("http://dowajo.run.goorm.site/api/updateToken", {
@@ -72,8 +74,10 @@ const MyPage1 = () => {
         console.log(error.response);
       });
   }, []);
-
+  console.log(reservelist);
   console.log(decoding);
+  const type = decoding.type;
+
   // reservelist.sort(function (a, b) {
   //   return b.id - a.id;
   // });
@@ -87,15 +91,7 @@ const MyPage1 = () => {
   });
   console.log(sorteddata);
   const closeDate = null;
-  function counselormypagetype() {
-    const type = decoding.type;
-    let result = [];
-    if ((type = "counselor")) {
-      result = [decoding.url, decoding.name, decoding.email, decoding.nick];
-    } else {
-      result = [decoding.name, decoding.email, decoding.nick];
-    }
-  }
+
   return (
     <div>
       <Navbar />

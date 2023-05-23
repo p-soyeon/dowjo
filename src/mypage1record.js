@@ -24,7 +24,6 @@ export const Record1 = ({ list }) => {
     console.log(decodetoken);
     setdecoding(decodetoken);
   }, []);
-  console.log(decoding);
 
   const entrance = (event) => {
     //ReserveId = event.currentTarget.value;
@@ -41,18 +40,40 @@ export const Record1 = ({ list }) => {
       },
     });*/
   };
-
-  return (
-    <div>
-      <div className="ReserComp">
-        {list.Counselor.name} 상담사님<br></br> 상담 예약 시간:<br></br> {month}
-        월 {day}일<br></br>
-        {hours}:{minutes} ~ {hours + 1}:{minutes}
-        <br></br>
-        <button value={list.id} name={list.Counselor.name} onClick={entrance}>
-          입장
-        </button>
+  const entrance1 = (event) => {
+    window.location.href = `/videoroom?id=${
+      event.currentTarget.value
+    }&name=${encodeURIComponent(decoding.name)}&token=${encodeURIComponent(
+      localStorage.getItem("token")
+    )}&UserId=${event.currentTarget.name}`;
+  };
+  if (decoding.type === "counselors") {
+    return (
+      <div>
+        <div className="ReserComp">
+          {list.User.name} 고객님 <br></br> 상담 예약 시간:<br></br> {month}월{" "}
+          {day}일<br></br>
+          {hours}:{minutes} ~ {hours + 1}:{minutes}
+          <br></br>
+          <button value={list.id} name={list.User.name} onClick={entrance1}>
+            입장
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else if (decoding.type === "users") {
+    return (
+      <div>
+        <div className="ReserComp">
+          {list.Counselor.name} 상담사님<br></br> 상담 예약 시간:<br></br>{" "}
+          {month}월 {day}일<br></br>
+          {hours}:{minutes} ~ {hours + 1}:{minutes}
+          <br></br>
+          <button value={list.id} name={list.Counselor.name} onClick={entrance}>
+            입장
+          </button>
+        </div>
+      </div>
+    );
+  }
 };

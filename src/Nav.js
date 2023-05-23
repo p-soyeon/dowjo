@@ -27,7 +27,7 @@ const Navbar = () => {
   const logout = () => {
     let rftoken = localStorage.getItem("rftoken");
 
-    alert(rftoken);
+    alert("로그아웃");
     let accessToken = localStorage.getItem("token");
 
     axios
