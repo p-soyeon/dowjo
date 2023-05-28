@@ -1,39 +1,29 @@
 .myInfo {
-  background-color: white;
-  text-align: center;
-  border-radius: 3%;
-  width: 400px;
-  border: 2px solid rgb(174, 197, 173);
-  position: relative;
-  margin: 20px;
-  padding: 0px 0px 20px 20px;
+  margin-left: 70px;
+  margin-bottom: 30px;
+  width: 700px;
 }
 .Reserlist {
-  display: flex;
-  flex-wrap: wrap;
   border-radius: 10px;
 
   position: relative;
-
-  justify-content: center;
-  align-items: center;
 }
 .bg {
-  background-color: rgb(174, 197, 173);
-  width: 100%;
-  height: 800px;
+  background-color: rgb(255, 255, 255);
+  width: 70%;
+  justify-content: flex-end;
 }
 .ReserComp {
   display: inline-block;
   background-color: white;
   border: 2px solid rgb(174, 197, 173);
   margin: 1%;
-  border-radius: 3%;
+  border-radius: 20px;
 
   padding: 1%;
   text-align: center;
 
-  width: 300px;
+  width: 800px;
   border-radius: 5px;
   margin: 10px;
 }
@@ -53,19 +43,32 @@ h5 {
 }
 
 .entire {
+  width: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center; /* 수직 가운데 정렬 */
+
+  margin-top: 50px;
+  margin-left: 225px;
+}
+.informtable {
+  table-layout: fixed;
+  width: 700px;
+  margin-right: 1000px;
+  margin-left: 70px;
+}
+.td {
+  text-align: left;
+  padding-right: 10px;
+  font-size: 20px;
 }
 
-table td {
-  text-align: left;
-}
-table td:first-child {
+table .td:first-child {
   font-family: "Google Sans Text", "Google Sans", Roboto, Arial, sans-serif;
 
-  font-weight: 500;
+  font-weight: bold;
+  font-size: 20px;
   letter-spacing: 0.1px;
   line-height: 16px;
   text-transform: none;
@@ -74,7 +77,70 @@ table td:first-child {
   word-wrap: break-word;
   color: rgb(95, 99, 104);
 }
-
+.title {
+  font-weight: bold;
+  font-size: 30px;
+}
 table tr:nth-child(2) {
   border-bottom: 1px solid black;
+}
+.banner {
+  height: 300px;
+  width: 100%;
+  border: 1px solid;
+  background-color: rgb(174, 197, 173);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0 auto;
+  display: flex; /* 요소들을 가로 방향으로 정렬하기 위해 flex를 사용합니다. */
+  align-items: left;
+}
+.imgsize {
+  margin-left: 50px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 1px solid;
+}
+.name {
+  text-align: left;
+  font-weight: bold;
+  font-size: 30px;
+  font: bold;
+  color: rgb(255, 255, 255);
+}
+.welcome {
+  font-weight: bold;
+  font-size: 20px;
+}
+.line {
+  margin-right: 100px;
+  border-width: 3px;
+  border-color: rgb(174, 197, 173);
+}
+
+.App {
+  width: 100%;
+}
+.pastbox {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  font-size: 40px;
+}
+.planbox {
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  text-align: center; /* 가로 중앙 정렬 */
+  gap: 20px;
+}
+.pastr {
+  font-size: 15px;
 }

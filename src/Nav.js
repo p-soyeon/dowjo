@@ -64,14 +64,14 @@ const Navbar = () => {
         </li>{" "}
         <li className="blank"></li>
         <li> {decoding.name} 님</li>
-        <li>
+        <li className="mypage">
           <Link to="/Mypage1">
-            <BsPersonLinesFill size="40" color=" rgb(174, 197, 173)" />
+            <BsPersonLinesFill size="50" color=" rgb(174, 197, 173)" />
           </Link>{" "}
         </li>
-        <li>
+        <li className="logout">
           <button onClick={logout} className="btnicon">
-            <BiLogOut size="40" color=" rgb(174, 197, 173)"></BiLogOut>
+            <BiLogOut size="50" color=" rgb(174, 197, 173)"></BiLogOut>
           </button>
         </li>
       </ul>

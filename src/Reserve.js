@@ -14,7 +14,7 @@ import { Counselorbox } from "./Counselorbox";
 import DatePicker from "react-datepicker";
 import Navbar from "./Nav";
 import "react-datepicker/dist/react-datepicker.css";
-import { format } from "date-fns";
+
 import Nav from "./Nav";
 const refreshtoken = localStorage.getItem("rftoken");
 const accesstoken = localStorage.getItem("token");
@@ -67,6 +67,7 @@ const Reserve = ({}) => {
   const [startDate, setStartDate] = useState(new Date());
   const [name, setName] = useState("");
   const [intro, setintro] = useState("");
+  const [img, setimg] = useState("");
   //setId("1");
   useEffect(() => {
     axios
@@ -76,6 +77,7 @@ const Reserve = ({}) => {
         seturl(response.data.img);
         setName(response.data.name);
         setintro(response.data.intro);
+        setimg(response.data.img);
       });
   }, []);
 
@@ -147,29 +149,46 @@ const Reserve = ({}) => {
   return (
     <div>
       <Navbar />
-      <div className="entire">
-        <div className="intro">
-          {name}
-          <br></br>
-          {intro}
+      <div className="half">
+        <div class="green-section">
+          {" "}
+          <div className="reserveimg">
+            <img
+              className="imgcircle"
+              src={"https://dowajo.run.goorm.site" + img}
+            />{" "}
+            <div className="intro">
+              <span class="names">{name}</span> <span>상담사님</span>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
+              <span class="txt">소개글</span> <br></br>
+              <span class="intro"> {intro}</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            showTimeSelect
-            timeFormat="HH:mm"
-            timeIntervals={60}
-            timeCaption="time"
-            //minDate={new Date()}
-            dateFormat="MMMM d, yyyy h:mm aa"
-            excludeTimes={parseddate}
-            filterTime={filterTimes}
-            inline
-          />{" "}
+
+        <div class="white-section">
+          <div className="entire2">
+            <DatePicker
+              className="custom-datepicker"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={60}
+              timeCaption="time"
+              //minDate={new Date()}
+              dateFormat="MMMM d, yyyy h:mm aa"
+              excludeTimes={parseddate}
+              filterTime={filterTimes}
+              inline
+            />{" "}
+            <button onClick={submit}>제출</button>
+          </div>{" "}
         </div>
-        <button onClick={submit}>제출</button>
-      </div>{" "}
+      </div>
     </div>
   );
 };

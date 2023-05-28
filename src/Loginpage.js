@@ -100,14 +100,16 @@ const Loginpage = ({ settoken }) => {
           </tr>
         </table>
       </form>
-
-      <div className="btnlg">
-        <button onClick={Login} className="lg">
-          로그인
-        </button>
-        <button className="rg" onClick={Register}>
-          회원가입
-        </button>
+      <button onClick={Login} className="lg">
+        로그인
+      </button>
+      <div className="twoBtn">
+        <span>
+          첫 방문인가요?&nbsp;
+          <a className="reg" onClick={Register}>
+            회원가입
+          </a>
+        </span>
       </div>
     </div>
   );

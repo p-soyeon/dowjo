@@ -1,21 +1,70 @@
-.react-datepicker {
-}
 .react-datepicker__time-list {
   flex-direction: column;
+  font-size: 1em;
+  line-height: 1.9em;
 }
 .intro {
   text-align: left;
-  border: 1px solid;
+
   display: inline-block;
 
-  background-color: white;
   border: none;
   margin: 1%;
   border-radius: 3%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  padding: 1%;
 }
 
-.entire {
-  justify-content: center;
+.entire2 {
+  text-align: center;
+  margin-top: 25%;
+}
+.react-datepicker__time-container {
+  width: 100px;
+  height: 200px; /* time container의 가로 크기 설정 */
+}
+.custom-datepicker {
+  overflow: hidden;
+}
+.react-datepicker__time-box {
+  overflow: hidden;
+}
+.half {
+  height: 843px;
+  display: flex;
+}
+.colorbox {
+  width: 50%;
+  color: aqua;
+}
+.green-section {
+  flex: 1;
+  background-color: rgb(174, 197, 173);
+  display: flex;
+  flex-direction: column;
+  height: 843px;
+  text-align: center;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+}
+
+.white-section {
+  flex: 2;
+  background-color: white;
+  height: 843px;
+  text-align: center;
+}
+.names {
+  margin-left: 70px;
+  font-size: 20px;
+}
+.imgcircle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 1px solid;
+}
+.reserveimg {
+  margin-bottom: 200px;
+  text-align: center;
+}
+.intro {
 }

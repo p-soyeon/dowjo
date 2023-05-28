@@ -24,7 +24,7 @@ const token = localStorage.getItem("token");
 const accessToken1 = { token };
 const accessToken = accessToken1.token;
 const myname1 = { name };
-const myname = myname1;
+const myname = myname1.name;
 const roomId1 = { id };
 const roomId = JSON.stringify(roomId1);
 console.log(typeof accessToken);
@@ -41,6 +41,7 @@ const socket = io("https://dowajo.run.goorm.site", {
 function Videoroom() {
   console.log(typeof accessToken);
   console.log(typeof myname);
+  console.log(myname);
   console.log(typeof roomId);
   const [messages, setMessages] = useState([]);
 

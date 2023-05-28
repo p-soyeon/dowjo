@@ -4,7 +4,7 @@ import Videoroom from "./videoroom";
 import jwt_decode from "jwt-decode";
 import { useState } from "react";
 import { useEffect } from "react";
-export const Record1 = ({ list }) => {
+export const Record1 = ({ isPast, list }) => {
   const navigate = useNavigate();
   const utctime = new Date(list.start_time);
   const date = new Date(list.start_time);
@@ -19,6 +19,9 @@ export const Record1 = ({ list }) => {
   const [cname, setName] = useState("");
   const accesstoken = localStorage.getItem("token");
   const refreshtoken = localStorage.getItem("rftoken");
+  var today = new Date();
+  const todaytime = today.getTime();
+
   useEffect(() => {
     const decodetoken = jwt_decode(accesstoken);
     console.log(decodetoken);
@@ -49,13 +52,19 @@ export const Record1 = ({ list }) => {
   };
   if (decoding.type === "counselors") {
     return (
-      <div>
+      <div className="past">
         <div className="ReserComp">
           {list.User.name} 고객님 <br></br> 상담 예약 시간:<br></br> {month}월{" "}
           {day}일<br></br>
           {hours}:{minutes} ~ {hours + 1}:{minutes}
           <br></br>
-          <button value={list.id} name={list.User.name} onClick={entrance1}>
+          <button
+            className={isPast ? "disable-button" : ""}
+            disabled={isPast}
+            value={list.id}
+            name={list.User.name}
+            onClick={entrance1}
+          >
             입장
           </button>
         </div>
@@ -63,13 +72,19 @@ export const Record1 = ({ list }) => {
     );
   } else if (decoding.type === "users") {
     return (
-      <div>
+      <div className="past">
         <div className="ReserComp">
-          {list.Counselor.name} 상담사님<br></br> 상담 예약 시간:<br></br>{" "}
+          {list.Counselor.name} 상담사님 <br></br> 상담 예약 시간:<br></br>{" "}
           {month}월 {day}일<br></br>
           {hours}:{minutes} ~ {hours + 1}:{minutes}
           <br></br>
-          <button value={list.id} name={list.Counselor.name} onClick={entrance}>
+          <button
+            className={isPast ? "disable-button" : ""}
+            disabled={isPast}
+            value={list.id}
+            name={list.Counselor.name}
+            onClick={entrance1}
+          >
             입장
           </button>
         </div>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Record1 } from "./mypage1record.js";
+import { Record2 } from "./mypage1record.js";
 import jwt_decode from "jwt-decode";
 import Navbar from "./Nav";
 import "./mypage1.css";
@@ -81,7 +82,7 @@ const MyPage1 = () => {
   // reservelist.sort(function (a, b) {
   //   return b.id - a.id;
   // });
-  var today = new Date();
+
   const sorteddata = [...reservelist].sort((a, b) => {
     const timeA = new Date(a.start_time);
     const timeB = new Date(b.start_time);
@@ -91,35 +92,80 @@ const MyPage1 = () => {
   });
   console.log(sorteddata);
   const closeDate = null;
+  var today = new Date();
+  const todaytime = today.getTime();
+
+  const past = sorteddata.filter((item) => {
+    const itemTime = new Date(item.start_time).getTime();
+    return itemTime < todaytime;
+  });
+  const futureData = sorteddata.filter((item) => {
+    const itemTime = new Date(item.start_time).getTime(); // 객체의 시간을 밀리초로 변환
+    return itemTime >= todaytime;
+  });
+  console.log("과거" + past);
+  console.log("미래" + futureData);
 
   return (
     <div>
       <Navbar />
-
-      <div className="entire">
+      <div className="banner">
+        <img
+          className="imgsize"
+          src={"https://dowajo.run.goorm.site" + decoding.url}
+        />
         <div className="myInfo">
-          <h3>내 정보</h3>
-          <table>
+          <table className="informtable">
             <tr>
-              <td> 성명</td>
-              <td>{decoding.name}</td>
+              <td className="name">
+                {" "}
+                {decoding.name} 님<span class="welcome"> 환영합니다.</span>
+              </td>
+              <td className="td"></td>
             </tr>
-            <tr>
-              <td>이메일</td>
-              <td>{decoding.email}</td>
+            <br></br>
+            <br></br>
+            <tr className="tr1">
+              <td className="td">이메일</td>
+              <td className="td">{decoding.email}</td>
             </tr>
-            <tr>
-              <td>닉네임</td>
-              <td>{decoding.nickname}</td>
+            <br></br>
+            <tr className="tr1">
+              <td className="td">닉네임</td>
+              <td className="td">{decoding.nickname}</td>
+            </tr>
+            <br></br>
+            <tr className="tr1">
+              <td className="td">총 예약내역</td>
+              <td className="td"> {reservelist.length}건 </td>
             </tr>
           </table>
         </div>
+        <div className="planbox">
+          {" "}
+          <div className="pastreserve">
+            <span className="pastr"> 상담 예정</span>
+            <div className="pastbox"> {futureData.length}</div>
+          </div>{" "}
+          <div className="pastreserve">
+            <span className="pastr"> 지난 예약</span>
+            <div className="pastbox">{past.length}</div>
+          </div>
+        </div>
+      </div>{" "}
+      <h3 className="title">상담 예약 목록</h3>
+      <div className="entire">
         <div className="bg">
-          <h3>상담 예약 목록</h3>
-          <h5>총 예약내역: {reservelist.length} 건</h5> <br></br>
           <div className="Reserlist">
-            {sorteddata.map((list) => (
+            <span className="text">상담예약</span>
+            {futureData.map((list) => (
               <Record1 key={`key-${list.id}`} list={list} />
+            ))}
+            <hr class="line"></hr> <span className="text">지난상담</span>
+            {past.map((list) => (
+              <div className="different-design">
+                <Record1 key={`key-${list.id}`} list={list} isPast={true} />
+              </div>
             ))}
           </div>
         </div>
