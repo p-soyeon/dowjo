@@ -6,6 +6,7 @@ import { Record1 } from "./mypage1record.js";
 import { Record2 } from "./mypage1record.js";
 import jwt_decode from "jwt-decode";
 import Navbar from "./Nav";
+import { AiOutlineUser } from "react-icons/ai";
 import "./mypage1.css";
 const MyPage1 = () => {
   const navigate = useNavigate();
@@ -106,71 +107,140 @@ const MyPage1 = () => {
   console.log("과거" + past);
   console.log("미래" + futureData);
 
-  return (
-    <div>
-      <Navbar />
-      <div className="banner">
-        <img
-          className="imgsize"
-          src={"https://dowajo.run.goorm.site" + decoding.url}
-        />
-        <div className="myInfo">
-          <table className="informtable">
-            <tr>
-              <td className="name">
-                {" "}
-                {decoding.name} 님<span class="welcome"> 환영합니다.</span>
-              </td>
-              <td className="td"></td>
-            </tr>
-            <br></br>
-            <br></br>
-            <tr className="tr1">
-              <td className="td">이메일</td>
-              <td className="td">{decoding.email}</td>
-            </tr>
-            <br></br>
-            <tr className="tr1">
-              <td className="td">닉네임</td>
-              <td className="td">{decoding.nickname}</td>
-            </tr>
-            <br></br>
-            <tr className="tr1">
-              <td className="td">총 예약내역</td>
-              <td className="td"> {reservelist.length}건 </td>
-            </tr>
-          </table>
-        </div>
-        <div className="planbox">
-          {" "}
-          <div className="pastreserve">
-            <span className="pastr"> 상담 예정</span>
-            <div className="pastbox"> {futureData.length}</div>
-          </div>{" "}
-          <div className="pastreserve">
-            <span className="pastr"> 지난 예약</span>
-            <div className="pastbox">{past.length}</div>
+  let imgsrc;
+  if (decodetoken.type === "users") {
+    return (
+      <div>
+        <Navbar />
+        <div className="banner">
+          <div className="iconbox">
+            <AiOutlineUser className="icon" />
           </div>
-        </div>
-      </div>{" "}
-      <h3 className="title">상담 예약 목록</h3>
-      <div className="entire">
-        <div className="bg">
-          <div className="Reserlist">
-            <span className="text">상담예약</span>
-            {futureData.map((list) => (
-              <Record1 key={`key-${list.id}`} list={list} />
-            ))}
-            <hr class="line"></hr> <span className="text">지난상담</span>
-            {past.map((list) => (
-              <div className="different-design">
-                <Record1 key={`key-${list.id}`} list={list} isPast={true} />
-              </div>
-            ))}
+          <div className="myInfo">
+            <table className="informtable">
+              <tr>
+                <td className="name">
+                  {" "}
+                  {decoding.name} 님<span class="welcome"> 환영합니다.</span>
+                </td>
+                <td className="td"></td>
+              </tr>
+              <br></br>
+              <br></br>
+              <tr className="tr1">
+                <td className="td">이메일</td>
+                <td className="td">{decoding.email}</td>
+              </tr>
+              <br></br>
+              <tr className="tr1">
+                <td className="td">닉네임</td>
+                <td className="td">{decoding.nickname}</td>
+              </tr>
+              <br></br>
+              <tr className="tr1">
+                <td className="td">총 예약내역</td>
+                <td className="td"> {reservelist.length}건 </td>
+              </tr>
+            </table>
+          </div>
+          <div className="planbox">
+            {" "}
+            <div className="pastreserve">
+              <span className="pastr"> 상담 예정</span>
+              <div className="pastbox"> {futureData.length}</div>
+            </div>{" "}
+            <div className="pastreserve">
+              <span className="pastr"> 지난 예약</span>
+              <div className="pastbox">{past.length}</div>
+            </div>
+          </div>
+        </div>{" "}
+        <h3 className="title">상담 예약 목록</h3>
+        <div className="entire">
+          <div className="bg">
+            <div className="Reserlist">
+              <span className="text">상담예약</span>
+              {futureData.map((list) => (
+                <Record1 key={`key-${list.id}`} list={list} />
+              ))}
+              <hr class="line"></hr> <span className="text">지난상담</span>
+              {past.map((list) => (
+                <div className="different-design">
+                  <Record1 key={`key-${list.id}`} list={list} isPast={true} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <Navbar />
+        <div className="banner">
+          <img
+            className="imgsize"
+            src={"https://dowajo.run.goorm.site" + decoding.url}
+          />
+          <div className="myInfo">
+            <table className="informtable">
+              <tr>
+                <td className="name">
+                  {" "}
+                  {decoding.name} 님<span class="welcome"> 환영합니다.</span>
+                </td>
+                <td className="td"></td>
+              </tr>
+              <br></br>
+              <br></br>
+              <tr className="tr1">
+                <td className="td">이메일</td>
+                <td className="td">{decoding.email}</td>
+              </tr>
+              <br></br>
+              <tr className="tr1">
+                <td className="td">닉네임</td>
+                <td className="td">{decoding.nickname}</td>
+              </tr>
+              <br></br>
+              <tr className="tr1">
+                <td className="td">총 예약내역</td>
+                <td className="td"> {reservelist.length}건 </td>
+              </tr>
+            </table>
+          </div>
+          <div className="planbox">
+            {" "}
+            <div className="pastreserve">
+              <span className="pastr"> 상담 예정</span>
+              <div className="pastbox"> {futureData.length}</div>
+            </div>{" "}
+            <div className="pastreserve">
+              <span className="pastr"> 지난 예약</span>
+              <div className="pastbox">{past.length}</div>
+            </div>
+          </div>
+        </div>{" "}
+        <h3 className="title">상담 예약 목록</h3>
+        <div className="entire">
+          <div className="bg">
+            <div className="Reserlist">
+              <span className="text">상담예약</span>
+              {futureData.map((list) => (
+                <Record1 key={`key-${list.id}`} list={list} />
+              ))}
+              <hr class="line"></hr> <span className="text">지난상담</span>
+              {past.map((list) => (
+                <div className="different-design">
+                  <Record1 key={`key-${list.id}`} list={list} isPast={true} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 };
 export default MyPage1;

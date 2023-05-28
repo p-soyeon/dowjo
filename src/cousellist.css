@@ -1,24 +1,27 @@
 .c_box {
   text-align: left;
-  border: 1px solid;
+  border: 1px solid black;
   display: inline-block;
   width: 500px;
-  height: 200px;
+  height: 220px;
   background-color: white;
   border: none;
   margin: 1%;
   border-radius: 3%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   padding: 1%;
+  font-size: large;
 }
-
+textarea {
+  font-size: larger;
+}
 .c_box:hover {
-  background-color: rgb(190, 210, 178);
-
   cursor: pointer;
+  box-shadow: 0 0 10px rgb(151, 179, 139);
 }
 .c_field {
-  font-size: larger;
+  font-size: x-large;
+  font-weight: bold;
   display: inline-block;
 }
 
@@ -31,7 +34,7 @@
   margin-left: 5%;
   white-space: normal;
   justify-content: center;
-  font-size: medium;
+  font-size: large;
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;

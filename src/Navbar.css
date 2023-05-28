@@ -5,11 +5,11 @@
   top: 0;
   right: 0;
   left: 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   justify-content: space-between;
 }
 .blank {
-  width: calc(100% - 850px); /* 양옆의 콘텐츠 너비를 제외한 나머지 공간 */
+  width: calc(100% - 650px); /* 양옆의 콘텐츠 너비를 제외한 나머지 공간 */
   margin: 0 50px; /* 양옆의 콘텐츠에 대한 마진 설정 */
 }
 ul {
@@ -35,13 +35,16 @@ a {
 }
 
 .logo_img {
-  width: 50%;
   float: left;
   margin-left: 50px;
+  width: 350px;
 }
 
 .logo_ul {
   display: flex;
+}
+.userName {
+  color: rgb(52, 77, 64);
 }
 .nav_lg {
   height: 20px;
@@ -77,5 +80,13 @@ a {
 .logobtn {
   background: none;
   border: none;
+  cursor: pointer;
+}
+li {
+  font-size: 115%;
+  margin: 5px;
+}
+
+.logout {
   cursor: pointer;
 }

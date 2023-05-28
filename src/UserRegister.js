@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./UserRegister.css";
 import axios from "axios";
 import { useState } from "react";
@@ -61,6 +61,10 @@ const UserRegister = () => {
   };
   return (
     <div className="mainp">
+      {" "}
+      <Link to="/">
+        <img alt="logo_img" className="logo_img" src={require("./logo.png")} />
+      </Link>
       <head>
         <title>이용자 회원가입</title>
       </head>
@@ -72,6 +76,7 @@ const UserRegister = () => {
           <br />
 
           <input
+            className="input_ur"
             onChange={onsetNameHandler}
             type="text"
             placeholder="이름"
@@ -83,14 +88,18 @@ const UserRegister = () => {
           <label htmlFor="number">핸드폰번호 </label>
           <br />
 
-          <input onChange={onsetnumberHandler} type="text" id="number" />
-
+          <input
+            onChange={onsetnumberHandler}
+            className="input_ur"
+            type="text"
+            id="number"
+          />
           <br></br>
           <label>이메일</label>
-          <br />
-
+          <br></br>
           <input
             onChange={onEmailHandler}
+            className="input_ur"
             type="Email"
             placeholder="email@gmail.com"
           />
@@ -102,6 +111,7 @@ const UserRegister = () => {
 
           <input
             onChange={onPwHandler}
+            className="input_ur"
             type="password"
             placeholder="password"
             id="password"
@@ -114,6 +124,7 @@ const UserRegister = () => {
 
           <input
             onChange={oncheckpwHandler}
+            className="input_ur"
             type="password"
             placeholder="password"
             id="password"
@@ -125,6 +136,7 @@ const UserRegister = () => {
 
           <input
             onChange={onsetNicknameHandler}
+            className="input_ur"
             type="text"
             placeholder="닉네임"
             id="nickname"
@@ -145,7 +157,7 @@ const UserRegister = () => {
         </form>
         <br></br>
         <div className="btn">
-          <button className="reg" onClick={Register}>
+          <button className="rg" onClick={Register}>
             가입
           </button>
         </div>

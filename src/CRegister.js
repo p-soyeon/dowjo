@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import React, { useRef, useState } from "react";
 
 import axios from "axios";
@@ -126,9 +126,17 @@ const CRegister = () => {
       <title>회원가입</title>
 
       <div className="register">
-        <h2 className="cr">상담사 회원가입</h2>
+        <Link to="/">
+          <img
+            alt="logo_img"
+            className="logo_img"
+            src={require("./logo.png")}
+          />
+        </Link>
+
         <br />
         <form onSubmit={onSubmitHandler}>
+          <h2 className="cr">상담사 회원가입</h2>
           <label htmlFor="name"> 이름 </label>
           <br />
 
@@ -140,33 +148,35 @@ const CRegister = () => {
             name="name"
           />
           <br />
-          <label htmlFor="name"> 프로필 이미지 </label>
-          <br />
-          <input
-            className="nonbtn"
-            type="file"
-            accept="image/*"
-            id="imgChangeBtn"
-            ref={imgRef}
-            onChange={imgChangeHandler}
-          />
-          <br />
-          <img
-            userImgUrl={accountImg}
-            src={accountImg ? accountImg : `/images/icon/user.png`}
-            alt="프로필 이미지"
-          />
 
+          <div className="aProfile">
+            <label htmlFor="profile"> 프로필 이미지 </label>
+            <br></br>
+            <input
+              className="nonbtn"
+              type="file"
+              accept="image/*"
+              id="imgChangeBtn"
+              ref={imgRef}
+              onChange={imgChangeHandler}
+            />
+            <br></br>
+            <img
+              userImgUrl={accountImg}
+              src={accountImg ? accountImg : `/images/icon/user.png`}
+              alt="프로필 이미지"
+            />
+          </div>
           <br></br>
 
-          <label htmlFor="category">분야</label>
-          <br></br>
+          <label htmlFor="category_s">분야</label>
+
           <div>
             <select
               onChange={onFieldHandler}
               type="text"
               placeholder="분야"
-              className="category"
+              className="category_s"
             >
               <option value="심리">심리</option>
               <option value="법률">법률</option>
@@ -177,7 +187,7 @@ const CRegister = () => {
               <option value="기타">기타</option>
             </select>
           </div>
-          <br></br>
+
           <label>이메일</label>
           <br />
 
@@ -238,6 +248,7 @@ const CRegister = () => {
           <label htmlFor="inform">경력/자기소개</label>
           <br />
           <textarea
+            className="textarea_intro"
             onChange={onsetintroHandler}
             placeholder="자기소개를 입력해주세요"
           ></textarea>
@@ -245,7 +256,7 @@ const CRegister = () => {
           <br></br>
         </form>
         <div className="btn">
-          <button onClick={CRegi} className="reg">
+          <button onClick={CRegi} className="rg">
             가입
           </button>
         </div>

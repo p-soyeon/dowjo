@@ -1,11 +1,12 @@
 .mainp {
+  overflow: auto;
   background: #ffffff;
   margin: 0px;
-  padding: 100px;
+  overflow: visible;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
+
   justify-content: center; /* 수평 가운데 정렬 */
   align-items: center; /* 수직 가운데 정렬 */
 }
@@ -23,42 +24,44 @@ h2 {
   margin-left: 200px;
 }
 
-input {
-  margin-right: 20px;
+.rg {
+  height: 50px;
+  border-radius: 4px;
+  margin-top: 20px;
+  font-size: 150%;
+  border: none;
+  width: 252px;
+  background-color: rgb(151, 179, 139);
+
+  /* 상자 디자인 큰틀*/
+
+  border: 0px;
+
+  /* 글씨 */
+  color: white;
+
+  font-weight: bold;
+}
+
+/*버튼 눌리는 효과*/
+.rg:hover {
+  cursor: pointer;
+}
+.rg:active {
+  box-shadow: inset -0.3rem -0.1rem 1.4rem #fbfbfb,
+    inset 0.3rem 0.4rem 0.8rem #bec5d0;
+  cursor: pointer;
+}
+
+.input_ur {
   padding: 0px;
-  border-top: 1px solid #cfcfcf;
-  border-left: 1px solid #cfcfcf;
-  border-right: 1px solid #cfcfcf;
-  border-bottom: 1px solid #cfcfcf;
+  border-radius: 3px;
+  background-color: rgb(233, 233, 233);
   width: 250px;
   height: 30px;
+  font-size: large;
 }
 
-label {
-  font-weight: bolid;
-  color: #736b74bf;
-}
-.reg {
-  width: 100px;
-  text-align: center;
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 20px;
-  border: #000000 1px solid;
-}
-.category {
-  margin-bottom: 8px;
-  height: 30px;
-
-  border: 1px solid #cfcfcf;
-}
-textarea {
-  width: 250px;
-  border: 1px solid #cfcfcf;
-  height: 100px;
-  margin-top: 10px;
-}
-.btn {
-  text-align: center;
-  margin-right: 30px;
+.logo_img {
+  width: 272px;
 }

@@ -63,7 +63,7 @@ const Navbar = () => {
           </Link>
         </li>{" "}
         <li className="blank"></li>
-        <li> {decoding.name} 님</li>
+        <li className="userName"> {decoding.name} 님</li>
         <li className="mypage">
           <Link to="/Mypage1">
             <BsPersonLinesFill size="50" color=" rgb(174, 197, 173)" />

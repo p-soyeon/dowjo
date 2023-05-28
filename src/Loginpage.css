@@ -2,16 +2,20 @@
   color: rgb(54, 54, 54);
   font-weight: bold;
 }
-
+.form {
+  width: 303px;
+  margin: 0;
+  display: flex; /* div 요소를 flex 컨테이너로 설정 */
+  justify-content: center; /* 가로 방향 가운데 정렬 */
+  align-items: center; /* 세로 방향 가운데 정렬 */
+}
 .loginp {
   display: flex; /* div 요소를 flex 컨테이너로 설정 */
-  justify-content: flex-end; /* 가로 방향 가운데 정렬 */
+  justify-content: space-evenly; /* 가로 방향 가운데 정렬 */
   align-items: center; /* 세로 방향 가운데 정렬 */
   margin-top: 200px;
   position: relative;
-  background-color: rgb(174, 197, 170);
-  right: 0%;
-  width: 100%;
+  width: 70vh;
 
   background: #ffffff;
 
@@ -19,86 +23,78 @@
   flex-direction: column;
   flex-wrap: nowrap;
 }
-.btnlg {
-  text-align: center;
+.logo_img {
+  display: block;
+  margin: 0 auto;
+  width: 350px;
 }
+.twoBtn {
+  text-align: center;
+
+  display: flex; /* div 요소를 flex 컨테이너로 설정 */
+  flex-direction: column;
+}
+
 .lg {
-  height: 20px;
+  height: 50px;
   border-radius: 4px;
   margin-top: 20px;
+  font-size: 150%;
   border: none;
-  width: 50%;
-  background-color: rgba(173, 173, 173, 0.676);
+  width: 300px;
+  background-color: rgb(151, 179, 139);
 
   /* 상자 디자인 큰틀*/
 
   border: 0px;
-  background-color: #e4ebf5;
 
   /* 글씨 */
-  color: #333333;
+  color: white;
 
   font-weight: bold;
-
-  animation-name: keybtn-language;
-  animation-duration: 0.2s;
 }
 
 /*버튼 눌리는 효과*/
+.lg:hover {
+  cursor: pointer;
+}
 .lg:active {
   box-shadow: inset -0.3rem -0.1rem 1.4rem #fbfbfb,
     inset 0.3rem 0.4rem 0.8rem #bec5d0;
   cursor: pointer;
 }
-td {
-  white-space: nowrap;
-  padding: 2px;
-}
-.rg {
-  height: 20px;
-  border-radius: 4px;
 
-  border: none;
-  width: 62%;
-  background-color: rgba(173, 173, 173, 0.676);
-
-  /* 상자 디자인 큰틀*/
-
-  border: 0px;
-  background-color: #e4ebf5;
-
-  /* 글씨 */
-  color: #333333;
-
+.reg {
   font-weight: bold;
-
-  animation-name: keybtn-language;
-  animation-duration: 0.2s;
 }
-
-.rg:active {
-  box-shadow: inset -0.3rem -0.1rem 1.4rem #fbfbfb,
-    inset 0.3rem 0.4rem 0.8rem #bec5d0;
+.reg:hover {
   cursor: pointer;
 }
-.box1 {
-  border: 0;
-  width: 150px;
-  outline: none;
-  font-size: medium;
-  background-color: rgb(233, 233, 233);
-}
+.box1,
 .box2 {
   border: 0;
-  width: 150px;
+  width: 300px;
+  height: 50px;
   outline: none;
-  font-size: medium;
+  font-size: 120%;
   background-color: rgb(233, 233, 233);
+  border: 1px solid #bec5d0;
+  border-radius: 2px;
+  margin: 0 0 0 0;
 }
-table td:first-child {
-  width: 20px;
+.box1:focus {
+  border: 1px solid rgb(81, 132, 60);
+}
+.box2:focus {
+  border: 1px solid rgb(81, 132, 60);
 }
 
-table td:nth-child(2) {
-  width: 50px;
+label {
+  font-size: 120%;
+}
+span {
+  margin-top: 20px;
+}
+.form {
+  width: 350px;
 }

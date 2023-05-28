@@ -132,13 +132,20 @@ const Mainpage = () => {
   return (
     <div>
       <Navbar />
+      <div className="banner">
+        <h2 className="dowajo">Dowajo</h2>
+        <h4 className="explain">
+          다양한 분야의 상담사들을 한 곳에서 만나보세요.
+        </h4>
+      </div>
       <div className="category">
         <table>
           <tr>
-            <td>
+            <td className="td_cate">
               {" "}
               <label htmlFor="checkbox-a">
                 <input
+                  className="in_check"
                   type="checkbox"
                   id="checkbox-a"
                   onChange={(event) => Checkbox(event)}
@@ -147,9 +154,10 @@ const Mainpage = () => {
                 학업
               </label>
             </td>{" "}
-            <td>
+            <td className="td_cate">
               <label htmlFor="checkbox-b">
                 <input
+                  className="in_check"
                   type="checkbox"
                   id="checkbox-b"
                   onChange={(event) => Checkbox(event)}
@@ -158,10 +166,11 @@ const Mainpage = () => {
                 진로
               </label>
             </td>{" "}
-            <td>
+            <td className="td_cate">
               {" "}
               <label htmlFor="checkbox-c">
                 <input
+                  className="in_check"
                   type="checkbox"
                   id="checkbox-c"
                   onChange={(event) => Checkbox(event)}
@@ -170,10 +179,11 @@ const Mainpage = () => {
                 건강
               </label>
             </td>{" "}
-            <td>
+            <td className="td_cate">
               {" "}
               <label htmlFor="checkbox-d">
                 <input
+                  className="in_check"
                   type="checkbox"
                   id="checkbox-d"
                   onChange={(event) => Checkbox(event)}
@@ -182,10 +192,11 @@ const Mainpage = () => {
                 심리
               </label>
             </td>{" "}
-            <td>
+            <td className="td_cate">
               {" "}
               <label htmlFor="checkbox-e">
                 <input
+                  className="in_check"
                   type="checkbox"
                   id="checkbox-e"
                   onChange={(event) => Checkbox(event)}
@@ -194,10 +205,11 @@ const Mainpage = () => {
                 법률
               </label>
             </td>{" "}
-            <td>
+            <td className="td_cate">
               {" "}
               <label htmlFor="checkbox-f">
                 <input
+                  className="in_check"
                   type="checkbox"
                   id="checkbox-f"
                   onChange={(event) => Checkbox(event)}
@@ -206,10 +218,11 @@ const Mainpage = () => {
                 투자
               </label>
             </td>{" "}
-            <td>
+            <td className="td_cate">
               {" "}
               <label htmlFor="checkbox-g">
                 <input
+                  className="in_check"
                   type="checkbox"
                   id="checkbox-f"
                   onChange={(event) => Checkbox(event)}

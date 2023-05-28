@@ -27,7 +27,7 @@ export const Record1 = ({ isPast, list }) => {
     console.log(decodetoken);
     setdecoding(decodetoken);
   }, []);
-
+  console.log(decoding);
   const entrance = (event) => {
     //ReserveId = event.currentTarget.value;
     window.location.href = `/videoroom?id=${
@@ -44,11 +44,15 @@ export const Record1 = ({ isPast, list }) => {
     });*/
   };
   const entrance1 = (event) => {
-    window.location.href = `/videoroom?id=${
+    window.location.href = `/videoroom?roomid=${
       event.currentTarget.value
     }&name=${encodeURIComponent(decoding.name)}&token=${encodeURIComponent(
       localStorage.getItem("token")
-    )}&UserId=${event.currentTarget.name}`;
+    )}&UserId=${event.currentTarget.name}&profileimg=${
+      event.target.dataset.url
+    }&myid=${encodeURIComponent(decoding.id)}&email=${encodeURIComponent(
+      decoding.email
+    )}`;
   };
   if (decoding.type === "counselors") {
     return (
@@ -85,7 +89,8 @@ export const Record1 = ({ isPast, list }) => {
             name={list.Counselor.name}
             onClick={entrance1}
           >
-            입장
+            {" "}
+            <span data-url={list.Counselor.img}>입장</span>
           </button>
         </div>
       </div>

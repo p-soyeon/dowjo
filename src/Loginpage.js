@@ -65,51 +65,45 @@ const Loginpage = ({ settoken }) => {
     event.preventDefault();
   };
   return (
-    <div className="loginp">
-      <h2 className="login">로그인</h2>
-      <br></br>
-      <form onChange={onSubmitHandler}>
-        <table>
-          <tr>
-            <td>
-              {" "}
-              <label>이메일 </label>
-            </td>
-            <td>
-              <input
-                onChange={onEmailHandler}
-                className="box1"
-                id="email"
-                type="email"
-              ></input>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label>비밀번호</label>
-            </td>
-            <td>
-              {" "}
-              <input
-                onChange={onPwHandler}
-                className="box2"
-                id="pw"
-                type="password"
-              ></input>
-            </td>
-          </tr>
-        </table>
-      </form>
-      <button onClick={Login} className="lg">
-        로그인
-      </button>
-      <div className="twoBtn">
-        <span>
-          첫 방문인가요?&nbsp;
-          <a className="reg" onClick={Register}>
-            회원가입
-          </a>
-        </span>
+    <div className="entire">
+      <div className="loginp">
+        <img className="logo_img" alt="logo_img" src={require("./logo.png")} />
+
+        <h2 className="login">로그인</h2>
+        <br></br>
+        <form className=".form" onChange={onSubmitHandler}>
+          <label>이메일 </label>
+          <br></br>
+          <input
+            onChange={onEmailHandler}
+            className="box1"
+            id="email"
+            type="email"
+            placeholder="example@naver.com"
+          ></input>
+          <br></br>
+          <label>비밀번호</label>
+          <br></br>
+          <input
+            onChange={onPwHandler}
+            className="box2"
+            id="pw"
+            type="password"
+            placeholder="password"
+          ></input>{" "}
+          <br></br>
+        </form>
+        <button onClick={Login} className="lg">
+          로그인
+        </button>
+        <div className="twoBtn">
+          <span>
+            첫 방문인가요?&nbsp;
+            <a className="reg" onClick={Register}>
+              회원가입
+            </a>
+          </span>
+        </div>
       </div>
     </div>
   );

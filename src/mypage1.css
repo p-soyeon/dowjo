@@ -144,3 +144,15 @@ table tr:nth-child(2) {
 .pastr {
   font-size: 15px;
 }
+.icon {
+  width: 240px;
+  height: 240px;
+  color: white;
+}
+.iconbox {
+  margin-left: 50px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 10px solid;
+}
