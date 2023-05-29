@@ -53,7 +53,7 @@ const Videos = ({
           )}
         </div>
         <div className="info">
-          <div className="name">{cname}</div> <div className="null" />
+          <div className="name">{oppInfo.name}</div> <div className="null" />
           {oppSettings.mikeOn ? <BsFillMicFill /> : <BsFillMicMuteFill />}
         </div>
       </div>

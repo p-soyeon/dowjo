@@ -14,15 +14,15 @@ import { useParams } from "react-router-dom";
 const searchParams = new URLSearchParams(window.location.search);
 const profileimg = searchParams.get("profileimg"); //상담사 프로필 이미지
 console.log(profileimg);
-const cname = searchParams.get("counselorId");
+const cname = searchParams.get("counselorId"); //상담사 이름
 const list = searchParams.get("list");
-const name = searchParams.get("name");
+const name = searchParams.get("name"); //자기 이름
 const email = searchParams.get("email");
 const roomid = searchParams.get("roomid");
 const myid = searchParams.get("myid");
-const uname = searchParams.get("UserId");
+const oppname = searchParams.get("oppname"); //상대방이름
 console.log(cname);
-console.log(uname);
+
 //const token = searchParams.get("token");
 console.log("videoroom.js 로드");
 
@@ -439,12 +439,12 @@ function App() {
   }, [settings]);
   const oppInfo = {
     //상대방이 상담사일때
-    name: cname,
+    name: oppname,
     url: profileimg,
   };
   const oppInfo2 = {
     //상대방이 사용자일때
-    name: uname,
+    name: oppname,
   };
   return (
     <Overlay>
@@ -459,8 +459,8 @@ function App() {
           myMic={settings.mikeOn}
           oppMic={true}
           myname={myname}
-          cname={cname}
-          uname={uname} // 해당 유저이름
+          cname={oppname}
+          uname={myname} // 해당 유저이름
           myStream={myStream}
           oppStream={oppStream}
           oppConnected={oppConnected}

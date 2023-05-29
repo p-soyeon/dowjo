@@ -28,29 +28,15 @@ export const Record1 = ({ isPast, list }) => {
     setdecoding(decodetoken);
   }, []);
   console.log(decoding);
-  const entrance = (event) => {
-    //ReserveId = event.currentTarget.value;
-    window.location.href = `/videoroom?id=${
-      event.currentTarget.value
-    }&name=${encodeURIComponent(decoding.name)}&token=${encodeURIComponent(
-      localStorage.getItem("token")
-    )}&counselorId=${event.currentTarget.name}`;
-    /*navigate("/videoroom", {
-      state: {
-        id: event.currentTarget.value,
-        name: decoding.name,
-        token: localStorage.getItem("token"),
-      },
-    });*/
-  };
+
   const entrance1 = (event) => {
     window.location.href = `/videoroom?roomid=${
       event.currentTarget.value
     }&name=${encodeURIComponent(decoding.name)}&token=${encodeURIComponent(
       localStorage.getItem("token")
-    )}&UserId=${event.currentTarget.name}&profileimg=${
+    )}&oppname=${event.currentTarget.name}&profileimg=${encodeURIComponent(
       event.target.dataset.url
-    }&myid=${encodeURIComponent(decoding.id)}&email=${encodeURIComponent(
+    )}&myid=${encodeURIComponent(decoding.id)}&email=${encodeURIComponent(
       decoding.email
     )}`;
   };
