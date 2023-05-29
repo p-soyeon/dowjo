@@ -440,7 +440,7 @@ function App() {
   const oppInfo = {
     //상대방이 상담사일때
     name: cname,
-    url: profileimg,
+    url: "https://dowajo.run.goorm.site" + profileimg,
   };
   const oppInfo2 = {
     //상대방이 사용자일때

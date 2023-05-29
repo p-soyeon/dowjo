@@ -174,6 +174,7 @@ const Reserve = ({}) => {
             <DatePicker
               className="custom-datepicker"
               selected={startDate}
+              minDate={new Date()} // 과거 날짜 disable
               onChange={(date) => setStartDate(date)}
               showTimeSelect
               timeFormat="HH:mm"
