@@ -6,7 +6,7 @@ import { Record1 } from "./mypage1record.js";
 import { Record2 } from "./mypage1record.js";
 import jwt_decode from "jwt-decode";
 import Navbar from "./Nav";
-import { AiOutlineUser } from "react-icons/ai";
+import { FaRegUserCircle } from "react-icons/fa";
 import "./mypage1.css";
 const MyPage1 = () => {
   const navigate = useNavigate();
@@ -114,7 +114,7 @@ const MyPage1 = () => {
         <Navbar />
         <div className="banner">
           <div className="iconbox">
-            <AiOutlineUser className="icon" />
+            <FaRegUserCircle className="icon" />
           </div>
           <div className="myInfo">
             <table className="informtable">
@@ -146,12 +146,17 @@ const MyPage1 = () => {
           <div className="planbox">
             {" "}
             <div className="pastreserve">
-              <span className="pastr"> 상담 예정</span>
-              <div className="pastbox"> {futureData.length}</div>
+              <div className="pastbox">
+                {" "}
+                <span className="pastr"> 상담 예정</span>
+                {futureData.length}
+              </div>
             </div>{" "}
             <div className="pastreserve">
-              <span className="pastr"> 지난 예약</span>
-              <div className="pastbox">{past.length}</div>
+              <div className="pastbox">
+                {" "}
+                <span className="pastr"> 지난상담</span> {past.length}
+              </div>
             </div>
           </div>
         </div>{" "}

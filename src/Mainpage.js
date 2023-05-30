@@ -5,6 +5,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Counselorbox } from "./Counselorbox";
 import "./Mainpage.css";
+import jwt_decode from "jwt-decode";
+
 import Navbar from "./Nav";
 const main = {
   border: "1px solid black",
@@ -26,6 +28,9 @@ const box = {
 };
 
 const Mainpage = () => {
+  //토큰을 가져와서 토큰이 있으면 1번 nav 없으면 2 번 nav
+
+  //const [decoding, setdecoding] = useState([]);
   const rftoken = localStorage.getItem("rftoken");
   const params = new URLSearchParams();
   const [counSelor, setCounselor] = useState([]);
@@ -33,9 +38,11 @@ const Mainpage = () => {
   const [checkfield, setcheckfield] = useState([]); //checkbox 를 체크하면 해당 feild가 쿼리로 전해짐
   const [filtered, setFiltered] = useState([]); //백엔드에서 필터링되어 반환된 데이터를 담음
   const accesstoken = localStorage.getItem("token");
-  const refreshtoken = localStorage.getItem("rftoken");
+
+  const decoding = jwt_decode(accesstoken); //디코딩한 토큰
   //  settoken(accesstoken);
   const [newtoken, setnewtoken] = useState("");
+  const refreshtoken = localStorage.getItem("rftoken");
   const updatetoken = () => {
     axios
       .get("http://dowajo.run.goorm.site/api/updateToken", {
@@ -133,6 +140,7 @@ const Mainpage = () => {
     <div>
       <Navbar />
       <div className="banner">
+        <span name999>{decoding.name}</span>
         <h2 className="dowajo">Dowajo</h2>
         <h4 className="explain">
           다양한 분야의 상담사들을 한 곳에서 만나보세요.

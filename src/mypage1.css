@@ -124,8 +124,8 @@ table tr:nth-child(2) {
   width: 100%;
 }
 .pastbox {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   background-color: white;
   border: 1px solid #ccc;
   padding: 20px;
@@ -142,18 +142,22 @@ table tr:nth-child(2) {
 }
 .pastr {
   font-size: 15px;
+  display: flex;
+  margin-bottom: 0;
+  margin-left: 4px;
+  color: rgb(149, 186, 171);
+  font-weight: bolder;
 }
 .icon {
-  width: 240px;
-  height: 240px;
+  width: 280px;
+  height: 280px;
   color: white;
+  margin-bottom: 0px;
 }
 .iconbox {
   margin-left: 50px;
-  width: 250px;
-  height: 250px;
+
   border-radius: 50%;
-  border: 10px solid;
 }
 .smallimg {
   border: 1px solid;
@@ -178,8 +182,8 @@ table tr:nth-child(2) {
   line-height: 30px;
 }
 #listbutton {
-  height: 30px;
-  width: 100px;
+  height: 40px;
+  width: 150px;
   margin-left: 200px;
   margin-top: 55px;
   border: none;
@@ -192,4 +196,28 @@ table tr:nth-child(2) {
 .text12 {
   font-size: 25px;
   font-weight: 80px;
+}
+.custom-cursor {
+  color: white;
+  cursor: pointer;
+  background-color: rgb(174, 197, 173);
+}
+.custom-cursor:hover {
+  background-color: #9b9b9b;
+}
+.futurer {
+  font-size: 15px;
+  display: flex;
+  margin-bottom: 0;
+  color: rgb(30, 1, 250);
+  font-weight: bolder;
+  margin-left: 4px;
+}
+.smallicon {
+  margin-top: 15px;
+  margin-left: 100px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: inline-block;
 }

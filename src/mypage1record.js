@@ -4,6 +4,7 @@ import Videoroom from "./videoroom";
 import jwt_decode from "jwt-decode";
 import { useState } from "react";
 import { useEffect } from "react";
+import { FaRegUserCircle } from "react-icons/fa";
 export const Record1 = ({ isPast, list }) => {
   const navigate = useNavigate();
   const utctime = new Date(list.start_time);
@@ -47,19 +48,29 @@ export const Record1 = ({ isPast, list }) => {
     return (
       <div className="past">
         <div className="ReserComp">
-          {list.User.name} 고객님 <br></br> 상담 예약 시간:<br></br> {month}월{" "}
-          {day}일<br></br>
-          {hours}:{minutes} ~ {hours + 1}:{minutes}
-          <br></br>
-          <button
-            className={isPast ? "disable-button" : ""}
-            disabled={isPast}
-            value={list.id}
-            name={list.User.name}
-            onClick={entrance1}
-          >
-            <span>입장</span>
-          </button>
+          <div className="re">
+            <span>
+              <FaRegUserCircle className="smallicon" color="black" />
+            </span>
+            <div className="vertical">
+              <span class="name3"> {list.User.name} </span> 고객님 <br></br>{" "}
+              상담 예약 시간
+              <br></br> {month}월 {day}일<br></br>
+              {hours}:{minutes} ~ {hours + 1}:{minutes}
+              <br></br>
+            </div>
+            <button
+              id="listbutton"
+              className={isPast ? "disable-button" : "custom-cursor"}
+              disabled={isPast}
+              value={list.id}
+              name={list.User.name}
+              onClick={entrance1}
+            >
+              {" "}
+              <span>입장</span>
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -67,20 +78,30 @@ export const Record1 = ({ isPast, list }) => {
     return (
       <div className="past">
         <div className="ReserComp">
-          {list.Counselor.name} 상담사님 <br></br> 상담 예약 시간:<br></br>{" "}
-          {month}월 {day}일<br></br>
-          {hours}:{minutes} ~ {hours + 1}:{minutes}
-          <br></br>
-          <button
-            className={isPast ? "disable-button" : ""}
-            disabled={isPast}
-            value={list.id}
-            name={list.Counselor.name}
-            onClick={entrance1}
-          >
-            {" "}
-            <span data-url={list.Counselor.img}>입장</span>
-          </button>
+          <div className="re">
+            <div className="smallimg">
+              <FaRegUserCircle className="icon" />
+            </div>
+
+            <div className="vertical">
+              <span class="name3">{list.Counselor.name}</span> 상담사님{" "}
+              <br></br> 상담 예약 시간:
+              <br></br> {month}월 {day}일<br></br>
+              {hours}:{minutes} ~ {hours + 1}:{minutes}
+              <br></br>
+            </div>
+            <button
+              id="listbutton"
+              className={isPast ? "disable-button" : "custom-cursor"}
+              disabled={isPast}
+              value={list.id}
+              name={list.Counselor.name}
+              onClick={entrance1}
+            >
+              {" "}
+              <span data-url={list.Counselor.img}>입장</span>
+            </button>
+          </div>
         </div>
       </div>
     );
