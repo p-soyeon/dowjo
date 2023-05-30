@@ -97,7 +97,7 @@ const Loginpage = ({ settoken }) => {
           로그인
         </button>
         <div className="twoBtn">
-          <span>
+          <span className="firstvisit">
             첫 방문인가요?&nbsp;
             <a className="reg" onClick={Register}>
               회원가입

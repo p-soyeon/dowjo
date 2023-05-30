@@ -20,6 +20,9 @@ const Videos = ({
   oppConnected,
 }) => {
   console.log(oppInfo); //test
+  console.log(myInfo.url);
+  console.log(oppInfo.url);
+
   useEffect(() => {
     console.log("Videos 리렌더링");
     if (myVideoRef.current && myStream.current && !myVideoRef.current.srcObject)
@@ -53,7 +56,8 @@ const Videos = ({
           )}
         </div>
         <div className="info">
-          <div className="name">{oppInfo.name}</div> <div className="null" />
+          <div className="cousleorname">{oppInfo.name}</div>{" "}
+          <div className="null" />
           {oppSettings.mikeOn ? <BsFillMicFill /> : <BsFillMicMuteFill />}
         </div>
       </div>
@@ -80,7 +84,8 @@ const Videos = ({
               )}
             </div>
             <div className="info">
-              <div className="name">{myname}</div> <div className="null" />
+              <div className="cousleorname">{myname}</div>{" "}
+              <div className="null" />
               {myMic ? <BsFillMicFill /> : <BsFillMicMuteFill />}
             </div>
           </div>

@@ -12,13 +12,15 @@ import { AiOutlineUser } from "react-icons/ai";
 import jwt_decode from "jwt-decode";
 import { useParams } from "react-router-dom";
 const searchParams = new URLSearchParams(window.location.search);
-const profileimg = searchParams.get("profileimg"); //상담사 프로필 이미지
+const profileimg = searchParams.get("profileimg1"); //상담사 프로필 이미지
+const profileimg2 = searchParams.get("profileimg2");
 console.log(profileimg);
 const cname = searchParams.get("counselorId"); //상담사 이름
 const list = searchParams.get("list");
 const name = searchParams.get("name"); //자기 이름
 const email = searchParams.get("email");
 const roomid = searchParams.get("roomid");
+
 const myid = searchParams.get("myid");
 const oppname = searchParams.get("oppname"); //상대방이름
 console.log(cname);
@@ -40,10 +42,16 @@ console.log(typeof roomId);
 //테스트용 constant 값들
 const accessToken = localStorage.getItem("token");
 
-const myInfo = {
+const myInfo1 = {
   id: myid,
   name: name,
   email: email,
+};
+const myInfo2 = {
+  id: myid,
+  name: name,
+  email: email,
+  url: profileimg2,
 };
 
 // myname = "장승훈";
@@ -446,6 +454,7 @@ function App() {
     //상대방이 사용자일때
     name: oppname,
   };
+  console.log(decodetoken);
   return (
     <Overlay>
       <VideoCallTemplate>
@@ -454,7 +463,7 @@ function App() {
           remoteVideoRef={remoteVideoRef}
           settings={settings}
           oppSettings={oppSettings}
-          myInfo={myInfo}
+          myInfo={decodetoken.type === "users" ? myInfo1 : myInfo2}
           oppInfo={decodetoken.type == "users" ? oppInfo : oppInfo2} //decoding type 이 user 이면 상대방이 상담사 아니면 상대방이 user
           myMic={settings.mikeOn}
           oppMic={true}

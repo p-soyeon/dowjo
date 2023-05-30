@@ -137,7 +137,19 @@
   color: #fff;
 }
 
-.react-datepicker__day--hover {
+.react-datepicker__day--hover,
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range--hover {
   background-color: rgb(174, 197, 173);
 }
 .react-datepicker__time-container
@@ -149,6 +161,21 @@
   color: white;
   font-weight: bold;
 }
+
 .react-datepicker__time-list-item--selected:hover {
+  background-color: rgb(118, 118, 118);
+}
+.reservebutton {
+  color: rgb(255, 255, 255);
   background-color: rgb(174, 197, 173);
+  border: none;
+  height: 40px;
+  width: 70px;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.reservebutton:hover {
+  background-color: rgb(118, 118, 118);
 }

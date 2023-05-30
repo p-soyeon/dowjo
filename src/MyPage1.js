@@ -159,11 +159,11 @@ const MyPage1 = () => {
         <div className="entire">
           <div className="bg">
             <div className="Reserlist">
-              <span className="text">상담예약</span>
+              <span className="text12">상담예정</span>
               {futureData.map((list) => (
                 <Record1 key={`key-${list.id}`} list={list} />
               ))}
-              <hr class="line"></hr> <span className="text">지난상담</span>
+              <hr class="line"></hr> <span className="text12">지난상담</span>
               {past.map((list) => (
                 <div className="different-design">
                   <Record1 key={`key-${list.id}`} list={list} isPast={true} />
@@ -226,11 +226,11 @@ const MyPage1 = () => {
         <div className="entire">
           <div className="bg">
             <div className="Reserlist">
-              <span className="text">상담예약</span>
+              <span className="text12">상담예정</span>
               {futureData.map((list) => (
                 <Record1 key={`key-${list.id}`} list={list} />
               ))}
-              <hr class="line"></hr> <span className="text">지난상담</span>
+              <hr class="line"></hr> <span className="text12">지난상담</span>
               {past.map((list) => (
                 <div className="different-design">
                   <Record1 key={`key-${list.id}`} list={list} isPast={true} />

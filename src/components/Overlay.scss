@@ -33,3 +33,12 @@ body {
     height: 90%;
   }
 }
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1420px;
+  width: 100%;
+  font-size: 100%;
+  background: #e9ecef;
+}

@@ -34,13 +34,16 @@ export const Record1 = ({ isPast, list }) => {
       event.currentTarget.value
     }&name=${encodeURIComponent(decoding.name)}&token=${encodeURIComponent(
       localStorage.getItem("token")
-    )}&oppname=${event.currentTarget.name}&profileimg=${encodeURIComponent(
+    )}&oppname=${event.currentTarget.name}&profileimg1=${encodeURIComponent(
       event.target.dataset.url
+    )}&profileimg2=${encodeURIComponent(
+      decoding.url
     )}&myid=${encodeURIComponent(decoding.id)}&email=${encodeURIComponent(
       decoding.email
     )}`;
   };
   if (decoding.type === "counselors") {
+    console.log(decoding.url);
     return (
       <div className="past">
         <div className="ReserComp">
@@ -55,7 +58,7 @@ export const Record1 = ({ isPast, list }) => {
             name={list.User.name}
             onClick={entrance1}
           >
-            입장
+            <span>입장</span>
           </button>
         </div>
       </div>

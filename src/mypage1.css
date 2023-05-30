@@ -19,11 +19,10 @@
   border: 2px solid rgb(174, 197, 173);
   margin: 1%;
   border-radius: 20px;
-
+  height: 150px;
   padding: 1%;
   text-align: center;
-
-  width: 800px;
+  width: 1000px;
   border-radius: 5px;
   margin: 10px;
 }
@@ -43,14 +42,13 @@ h5 {
 }
 
 .entire {
-  width: 80%;
+  text-align: center;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* 수직 가운데 정렬 */
-
+  /* flex-direction: column; */
+  justify-content: center;
   margin-top: 50px;
-  margin-left: 225px;
+  /* margin-left: 225px; */
 }
 .informtable {
   table-layout: fixed;
@@ -60,7 +58,7 @@ h5 {
 }
 .td {
   text-align: left;
-  padding-right: 10px;
+
   font-size: 20px;
 }
 
@@ -116,9 +114,10 @@ table tr:nth-child(2) {
   font-size: 20px;
 }
 .line {
-  margin-right: 100px;
+  /* margin-right: 100px; */
   border-width: 3px;
   border-color: rgb(174, 197, 173);
+  width: 1100px;
 }
 
 .App {
@@ -155,4 +154,42 @@ table tr:nth-child(2) {
   height: 250px;
   border-radius: 50%;
   border: 10px solid;
+}
+.smallimg {
+  border: 1px solid;
+  margin-top: 15px;
+  margin-left: 100px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.reservelist2 {
+  display: flex;
+}
+.re {
+  display: flex;
+}
+.vertical {
+  margin-left: 200px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: left;
+  line-height: 30px;
+}
+#listbutton {
+  height: 30px;
+  width: 100px;
+  margin-left: 200px;
+  margin-top: 55px;
+  border: none;
+  font-weight: bold;
+}
+
+.name3 {
+  font-size: 20px;
+}
+.text12 {
+  font-size: 25px;
+  font-weight: 80px;
 }

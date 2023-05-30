@@ -186,7 +186,10 @@ const Reserve = ({}) => {
               filterTime={filterTimes}
               inline
             />{" "}
-            <button onClick={submit}>제출</button>
+            <br></br>
+            <button className="reservebutton" onClick={submit}>
+              예약
+            </button>
           </div>{" "}
         </div>
       </div>
