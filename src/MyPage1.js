@@ -148,7 +148,7 @@ const MyPage1 = () => {
             <div className="pastreserve">
               <div className="pastbox">
                 {" "}
-                <span className="pastr"> 상담 예정</span>
+                <span className="futrer"> 상담 예정</span>
                 {futureData.length}
               </div>
             </div>{" "}
@@ -218,12 +218,17 @@ const MyPage1 = () => {
           <div className="planbox">
             {" "}
             <div className="pastreserve">
-              <span className="pastr"> 상담 예정</span>
-              <div className="pastbox"> {futureData.length}</div>
+              <div className="pastbox">
+                {" "}
+                <span className="futrer"> 상담 예정</span>
+                {futureData.length}
+              </div>
             </div>{" "}
             <div className="pastreserve">
-              <span className="pastr"> 지난 예약</span>
-              <div className="pastbox">{past.length}</div>
+              <div className="pastbox">
+                {" "}
+                <span className="pastr"> 지난상담</span> {past.length}
+              </div>
             </div>
           </div>
         </div>{" "}

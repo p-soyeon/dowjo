@@ -157,19 +157,28 @@ const Reserve = ({}) => {
               className="imgcircle"
               src={"https://dowajo.run.goorm.site" + img}
             />{" "}
-            <div className="intro">
+            <br></br>{" "}
+            <span class="counselorname">
+              {" "}
               <span class="names">{name}</span> <span>상담사님</span>
+            </span>{" "}
+            <br></br>
+            <div className="intro1">
               <br></br>
               <br></br>
               <br></br>
               <br></br>
               <span class="txt">소개글</span> <br></br>
-              <span class="intro"> {intro}</span>
+              <div className="introbox">
+                {" "}
+                <span class="intro"> {intro}</span>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="white-section">
+          <div className="reservetitle">예약하기</div>
           <div className="entire2">
             <DatePicker
               className="custom-datepicker"

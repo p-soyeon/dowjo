@@ -38,7 +38,7 @@
   align-items: center;
   justify-content: center;
 }
-.banner {
+.banner1 {
   height: 300px;
   width: 100%;
   background-color: rgb(174, 197, 173);
@@ -46,10 +46,16 @@
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .dowajo {
   font-size: 55px;
   color: rgb(52, 77, 64);
+  margin: 0;
+  padding: 0;
 }
 .explain {
   display: inline-block;

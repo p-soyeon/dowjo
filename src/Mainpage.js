@@ -139,11 +139,12 @@ const Mainpage = () => {
   return (
     <div>
       <Navbar />
-      <div className="banner">
-        <span name999>{decoding.name}</span>
+      <div className="banner1">
         <h2 className="dowajo">Dowajo</h2>
+
         <h4 className="explain">
-          다양한 분야의 상담사들을 한 곳에서 만나보세요.
+          <span name999>{decoding.name}</span> 님, 다양한 분야의 상담사들을 한
+          곳에서 만나보세요.
         </h4>
       </div>
       <div className="category">

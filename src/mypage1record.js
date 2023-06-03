@@ -79,9 +79,10 @@ export const Record1 = ({ isPast, list }) => {
       <div className="past">
         <div className="ReserComp">
           <div className="re">
-            <div className="smallimg">
-              <FaRegUserCircle className="icon" />
-            </div>
+            <img
+              className="smallimg"
+              src={"https://dowajo.run.goorm.site" + list.Counselor.img}
+            />
 
             <div className="vertical">
               <span class="name3">{list.Counselor.name}</span> 상담사님{" "}

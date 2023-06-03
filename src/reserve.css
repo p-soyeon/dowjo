@@ -5,15 +5,35 @@
   text-align: left;
 
   display: inline-block;
+  font-family: "Aharoni";
+  font-size: 20px;
+  border: 2px;
+  font-weight: bold;
+  margin: 3%;
+  border-radius: 3%;
+}
+.intro1 {
+  text-align: left;
 
-  border: none;
-  margin: 1%;
+  display: inline-block;
+  font-family: "Aharoni";
+  font-size: 20px;
+  border: 2px;
+
+  margin: 3%;
   border-radius: 3%;
 }
 
+.counselorname {
+}
+.reservetitle {
+  margin-top: 200px;
+  font-weight: bolder;
+  font-size: 30px;
+}
 .entire2 {
   text-align: center;
-  margin-top: 25%;
+  margin-top: 10%;
 }
 
 .half {
@@ -29,7 +49,7 @@
   background-color: rgb(174, 197, 173);
   display: flex;
   flex-direction: column;
-  height: 843px;
+  height: 1150px;
   text-align: center;
   justify-content: center; /* 가로 중앙 정렬 */
   align-items: center; /* 세로 중앙 정렬 */
@@ -38,12 +58,12 @@
 .white-section {
   flex: 2;
   background-color: white;
-  height: 843px;
+  height: 1150px;
   text-align: center;
 }
 .names {
-  margin-left: 70px;
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: bold;
 }
 .imgcircle {
   width: 250px;
@@ -55,8 +75,7 @@
   margin-bottom: 200px;
   text-align: center;
 }
-.intro {
-}
+
 .react-datepicker {
   font-family: RobotoMedium;
   font-size: 1em !important;
@@ -178,4 +197,9 @@
 }
 .reservebutton:hover {
   background-color: rgb(118, 118, 118);
+}
+.txt {
+  color: rgb(93, 94, 94);
+  font-weight: bolder;
+  font-size: 30px;
 }
