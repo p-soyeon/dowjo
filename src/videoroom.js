@@ -55,12 +55,6 @@ const myInfo2 = {
   url: profileimg2,
 };
 
-// myname = "장승훈";
-//const roomId = 1;
-//const cname = "강성태";
-//const uname = myname;
-//합칠때 지워주세요
-
 const socket = io("https://dowajo.run.goorm.site", {
   auth: {
     Authorization: accessToken,
@@ -71,7 +65,6 @@ const socket = io("https://dowajo.run.goorm.site", {
 function App() {
   const navigate = useNavigate();
   const decodetoken = jwt_decode(accessToken);
-
   const updatetoken = () => {
     axios
       .get("http://dowajo.run.goorm.site/api/updateToken", {
@@ -352,7 +345,7 @@ function App() {
       if (err.message === "auth 프로퍼티에 Authorization 토큰이 없습니다.") {
         console.log("토큰 업데이트 로직");
         let updatedToken = localStorage.getItem("token");
-
+        // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IuyepeyKue2biCIsImVtYWlsIjoid2tkdG1kZ25zcW5AbmF2ZXIuY29tIiwibmlja25hbWUiOiJob29ucyIsInR5cGUiOiJ1c2VycyIsInRva2VuIjoiYWNjZXNzIiwiaWF0IjoxNjg0NjY0NjU4LCJleHAiOjE2ODcyNTY2NTh9.D6LbSlRmOPis8Y93aoqx2Z3mTY775GC_3ysV7JgT7WU";
         /*
         updatedToken에 토큰값 불러오는 로직
         */
@@ -491,50 +484,52 @@ function App() {
   };
   console.log(decodetoken);
   return (
-    <Overlay>
-      <VideoCallTemplate>
-        <Videos
-          myVideoRef={myVideoRef}
-          remoteVideoRef={remoteVideoRef}
-          settings={settings}
-          oppSettings={oppSettings}
-          myInfo={decodetoken.type === "users" ? myInfo1 : myInfo2}
-          oppInfo={decodetoken.type == "users" ? oppInfo : oppInfo2} //decoding type 이 user 이면 상대방이 상담사 아니면 상대방이 user
-          myMic={settings.mikeOn}
-          oppMic={true}
-          myname={myname}
-          cname={oppname}
-          uname={myname} // 해당 유저이름
-          myStream={myStream}
-          oppStream={oppStream}
-          oppConnected={oppConnected}
-        />
-        <SettingBar
-          settings={settings}
-          setSettings={setSettings}
-          cameraLable={cameraLable}
-          mikeLable={mikeLable}
-          speakerLable={speakerLable}
-          setSpeakerLable={setSpeakerLable}
-          myVideoRef={myVideoRef}
-          remoteVideoRef={remoteVideoRef}
-          myStream={myStream}
-          ableVideos={ableVideos}
-          ableMikes={ableMikes}
-          ableSpeakers={ableSpeakers}
-          getMedia={getMedia}
-          onExit={onExit}
-        />
-      </VideoCallTemplate>
-      <ChatTemplate>
-        <ChatLog messages={messages} />
-        <TextInput
-          sendMessage={sendMessage}
-          ioSocket={ioSocket}
-          oppConnected={oppConnected}
-        />
-      </ChatTemplate>
-    </Overlay>
+    <div className="body">
+      <Overlay>
+        <VideoCallTemplate>
+          <Videos
+            myVideoRef={myVideoRef}
+            remoteVideoRef={remoteVideoRef}
+            settings={settings}
+            oppSettings={oppSettings}
+            myInfo={decodetoken.type === "users" ? myInfo1 : myInfo2}
+            oppInfo={decodetoken.type == "users" ? oppInfo : oppInfo2} //decoding type 이 user 이면 상대방이 상담사 아니면 상대방이 user
+            myMic={settings.mikeOn}
+            oppMic={true}
+            myname={myname}
+            cname={oppname}
+            uname={myname} // 해당 유저이름
+            myStream={myStream}
+            oppStream={oppStream}
+            oppConnected={oppConnected}
+          />
+          <SettingBar
+            settings={settings}
+            setSettings={setSettings}
+            cameraLable={cameraLable}
+            mikeLable={mikeLable}
+            speakerLable={speakerLable}
+            setSpeakerLable={setSpeakerLable}
+            myVideoRef={myVideoRef}
+            remoteVideoRef={remoteVideoRef}
+            myStream={myStream}
+            ableVideos={ableVideos}
+            ableMikes={ableMikes}
+            ableSpeakers={ableSpeakers}
+            getMedia={getMedia}
+            onExit={onExit}
+          />
+        </VideoCallTemplate>
+        <ChatTemplate>
+          <ChatLog messages={messages} />
+          <TextInput
+            sendMessage={sendMessage}
+            ioSocket={ioSocket}
+            oppConnected={oppConnected}
+          />
+        </ChatTemplate>
+      </Overlay>
+    </div>
   );
 }
 
