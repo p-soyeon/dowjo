@@ -22,24 +22,16 @@ const Select = () => {
         <h2>원하시는 서비스를 선택해주세요.</h2>
       </div>
 
-      <table className="twoBtn">
-        <tr>
-          <td className="td_btn">
-            <button className="counsel_btn" onClick={councelor}>
-              <h5>상담해주고 싶어요</h5>
-
-              <h1>상담자</h1>
-            </button>
-          </td>
-          <td className="td_btn">
-            {" "}
-            <button className="client_btn" onClick={user}>
-              <h5>상담 받고 싶어요</h5>
-              <h1>내담자</h1>
-            </button>
-          </td>
-        </tr>
-      </table>
+      <div className="half">
+        <button className="counsel_btn" onClick={councelor}>
+          <h5>상담해주고 싶어요</h5>
+          <h1>상담자</h1>
+        </button>{" "}
+        <button className="client_btn" onClick={user}>
+          <h5>상담 받고 싶어요</h5>
+          <h1>내담자</h1>
+        </button>
+      </div>
     </div>
   );
 };

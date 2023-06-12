@@ -47,7 +47,6 @@ const Loginpage = ({ settoken }) => {
           // console.log(jwt(token));
           //console.log(tokendecode);
           //  axios.defaults.headers.common["Authorization"] = //
-          axios.post();
 
           settoken(localStorage.getItem("token"));
           navigate("/Mainpage");

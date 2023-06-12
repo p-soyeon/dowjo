@@ -37,10 +37,12 @@ const Mainpage = () => {
   const [token, settoken] = useState([]);
   const [checkfield, setcheckfield] = useState([]); //checkbox 를 체크하면 해당 feild가 쿼리로 전해짐
   const [filtered, setFiltered] = useState([]); //백엔드에서 필터링되어 반환된 데이터를 담음
-  const accesstoken = localStorage.getItem("token");
+  let accesstoken = localStorage.getItem("token");
 
   const decoding = jwt_decode(accesstoken); //디코딩한 토큰
   //  settoken(accesstoken);
+
+  let decodetoken = jwt_decode(accesstoken);
   const [newtoken, setnewtoken] = useState("");
   const refreshtoken = localStorage.getItem("rftoken");
   const updatetoken = () => {
@@ -57,10 +59,7 @@ const Mainpage = () => {
 
           console.log(response.data);
 
-          localStorage.setItem(
-            "token",
-            JSON.stringify(response.data.accessToken)
-          );
+          localStorage.setItem("token", response.data.accessToken);
         } else {
           console.log(response.data);
         }
@@ -76,7 +75,7 @@ const Mainpage = () => {
       setInterval(() => {
         updatetoken();
         console.log("작업이 실행되었습니다.");
-      }, 90 * 60 * 1000);
+      }, 30000);
     }
 
     //서버에서 모든 상담사 목록 get

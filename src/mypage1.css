@@ -212,6 +212,12 @@ table tr:nth-child(2) {
   color: white;
   cursor: pointer;
   background-color: rgb(174, 197, 173);
+  height: 40px;
+  width: 150px;
+  margin-left: 200px;
+  margin-top: 55px;
+  border: none;
+  font-weight: bold;
 }
 .custom-cursor:hover {
   background-color: #9b9b9b;
@@ -231,4 +237,12 @@ table tr:nth-child(2) {
   height: 120px;
   border-radius: 50%;
   display: inline-block;
+}
+.disable-button {
+  height: 40px;
+  width: 150px;
+  margin-left: 200px;
+  margin-top: 55px;
+  border: none;
+  font-weight: bold;
 }

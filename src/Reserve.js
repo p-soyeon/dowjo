@@ -19,47 +19,11 @@ import Nav from "./Nav";
 const refreshtoken = localStorage.getItem("rftoken");
 const accesstoken = localStorage.getItem("token");
 const Reserve = ({}) => {
-  const updatetoken = () => {
-    axios
-      .get("http://dowajo.run.goorm.site/api/updateToken", {
-        headers: {
-          Authorization: refreshtoken,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        if (response.status == 200) {
-          console.log("콘솔 업데이트");
-
-          console.log(response.data);
-
-          localStorage.setItem(
-            "token",
-            JSON.stringify(response.data.accessToken)
-          );
-        } else {
-          console.log(response.data);
-        }
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  };
-
   const accesstoken = localStorage.getItem("token");
   const navigate = useNavigate();
   const location = useLocation();
 
   const id = location.state.id;
-  useEffect(() => {
-    //accesstoken 업데이트
-    setInterval(() => {
-      updatetoken();
-      console.log("작업이 실행되었습니다.");
-    }, 90 * 60 * 1000);
-
-    console.log(id);
-  });
 
   const [time, setTime] = useState([]);
   const [imgurl, seturl] = useState("");
@@ -71,7 +35,7 @@ const Reserve = ({}) => {
   //setId("1");
   useEffect(() => {
     axios
-      .get(`http://dowajo.run.goorm.site/api/counselor/${id}`)
+      .get(`https://dowajo.run.goorm.site/api/counselor/${id}`)
       .then((response) => {
         console.log(response.data);
         seturl(response.data.img);
@@ -89,7 +53,7 @@ const Reserve = ({}) => {
     console.log(startDate);
     axios
       .get(
-        `http://dowajo.run.goorm.site/api/reservation/time?id=${id}&day=${startDate}` //getyear
+        `https://dowajo.run.goorm.site/api/reservation/time?id=${id}&day=${startDate}` //getyear
       )
       .then((response) => {
         console.log(response.data);

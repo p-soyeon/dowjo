@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
@@ -20,7 +21,7 @@ const list = searchParams.get("list");
 const name = searchParams.get("name"); //자기 이름
 const email = searchParams.get("email");
 const roomid = searchParams.get("roomid");
-
+const refreshtoken = localStorage.getItem("rftoken");
 const myid = searchParams.get("myid");
 const oppname = searchParams.get("oppname"); //상대방이름
 console.log(cname);
@@ -40,7 +41,7 @@ console.log(typeof myname);
 console.log(typeof roomId);
 
 //테스트용 constant 값들
-const accessToken = localStorage.getItem("token");
+let accessToken = localStorage.getItem("token");
 
 const myInfo1 = {
   id: myid,
@@ -70,6 +71,40 @@ const socket = io("https://dowajo.run.goorm.site", {
 function App() {
   const navigate = useNavigate();
   const decodetoken = jwt_decode(accessToken);
+
+  const updatetoken = () => {
+    axios
+      .get("http://dowajo.run.goorm.site/api/updateToken", {
+        headers: {
+          Authorization: refreshtoken,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          console.log("콘솔 업데이트");
+
+          console.log(response.data);
+
+          localStorage.setItem("token", response.data.accessToken);
+          accessToken = response.data.accessToken;
+
+          decodetoken = jwt_decode(accessToken);
+          console.log(decodetoken);
+        } else {
+          console.log(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+  useEffect(() => {
+    setInterval(() => {
+      updatetoken();
+      console.log("작업이 실행되었습니다.");
+    }, 30000);
+  });
   const [messages, setMessages] = useState([]);
 
   const [settings, setSettings] = useState({
@@ -316,8 +351,8 @@ function App() {
     function onConnectError(err) {
       if (err.message === "auth 프로퍼티에 Authorization 토큰이 없습니다.") {
         console.log("토큰 업데이트 로직");
-        let updatedToken = //localStorage.getItem("token")
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IuyepeyKue2biCIsImVtYWlsIjoid2tkdG1kZ25zcW5AbmF2ZXIuY29tIiwibmlja25hbWUiOiJob29ucyIsInR5cGUiOiJ1c2VycyIsInRva2VuIjoiYWNjZXNzIiwiaWF0IjoxNjg0NjY0NjU4LCJleHAiOjE2ODcyNTY2NTh9.D6LbSlRmOPis8Y93aoqx2Z3mTY775GC_3ysV7JgT7WU";
+        let updatedToken = localStorage.getItem("token");
+
         /*
         updatedToken에 토큰값 불러오는 로직
         */

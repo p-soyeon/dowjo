@@ -36,7 +36,7 @@ export const Record1 = ({ isPast, list }) => {
     }&name=${encodeURIComponent(decoding.name)}&token=${encodeURIComponent(
       localStorage.getItem("token")
     )}&oppname=${event.currentTarget.name}&profileimg1=${encodeURIComponent(
-      event.target.dataset.url
+      event.currentTarget.id //이미지 넘겨주는 부분
     )}&profileimg2=${encodeURIComponent(
       decoding.url
     )}&myid=${encodeURIComponent(decoding.id)}&email=${encodeURIComponent(
@@ -92,7 +92,7 @@ export const Record1 = ({ isPast, list }) => {
               <br></br>
             </div>
             <button
-              id="listbutton"
+              id={list.Counselor.img}
               className={isPast ? "disable-button" : "custom-cursor"}
               disabled={isPast}
               value={list.id}
@@ -100,7 +100,7 @@ export const Record1 = ({ isPast, list }) => {
               onClick={entrance1}
             >
               {" "}
-              <span data-url={list.Counselor.img}>입장</span>
+              <span>입장</span>
             </button>
           </div>
         </div>

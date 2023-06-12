@@ -6,12 +6,10 @@ import Mainpage from "./Mainpage";
 import Videoroom from "./videoroom";
 import Reserve from "./Reserve";
 import Loginpage from "./Loginpage";
-import MyPage2 from "./MyPage2";
+
 import MyPage1 from "./MyPage1";
 import UserRegister from "./UserRegister";
-import Cpage from "./Cpage";
-import Upage from "./Upage";
-import Net from "./Net";
+
 import Nav from "./Nav";
 function App() {
   const [Counselor, setCounselor] = useState();
@@ -44,13 +42,10 @@ function App() {
           <Route path="/CRegister" element={<CRegister />}></Route>
           <Route path="/Mainpage" element={<Mainpage />}></Route>
           <Route path="/MyPage1" element={<MyPage1 />}></Route>
-          <Route path="/MyPage2" element={<MyPage2 />}></Route>
-          <Route path="/Upage" element={<Upage />}></Route>
-          <Route path="/Cpage" element={<Cpage />}></Route>
+
           <Route path="/Reserve" element={<Reserve />}></Route>
           <Route path="/Videoroom" element={<Videoroom />}></Route>
           <Route path="/Select" element={<Select />}></Route>
-          <Route path="/Net" element={<Net />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

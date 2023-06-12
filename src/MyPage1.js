@@ -1,4 +1,3 @@
-/*내담자 마이페이지*/
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -12,13 +11,13 @@ const MyPage1 = () => {
   const navigate = useNavigate();
 
   const [decoding, setdecoding] = useState([]);
-  const accesstoken = localStorage.getItem("token");
+  let accesstoken = localStorage.getItem("token");
   const [reservelist, setreservelist] = useState([]);
   const [detail, setdetail] = useState([]);
   const refreshtoken = localStorage.getItem("rftoken");
-  const decodetoken = jwt_decode(accesstoken);
+  let decodetoken = jwt_decode(accesstoken);
   console.log(decodetoken);
-  console.log(accesstoken);
+
   const updatetoken = () => {
     axios
       .get("http://dowajo.run.goorm.site/api/updateToken", {
@@ -33,10 +32,11 @@ const MyPage1 = () => {
 
           console.log(response.data);
 
-          localStorage.setItem(
-            "token",
-            JSON.stringify(response.data.accessToken)
-          );
+          localStorage.setItem("token", response.data.accessToken);
+          accesstoken = response.data.accessToken;
+
+          decodetoken = jwt_decode(accesstoken);
+          console.log(decodetoken);
         } else {
           console.log(response.data);
         }
@@ -49,7 +49,7 @@ const MyPage1 = () => {
     setInterval(() => {
       updatetoken();
       console.log("작업이 실행되었습니다.");
-    }, 90 * 60 * 1000);
+    }, 30000);
 
     setdecoding(decodetoken);
 
@@ -121,7 +121,7 @@ const MyPage1 = () => {
               <tr>
                 <td className="name">
                   {" "}
-                  {decoding.name} 님<span class="welcome"> 환영합니다.</span>
+                  {decodetoken.name} 님<span class="welcome"> 환영합니다.</span>
                 </td>
                 <td className="td"></td>
               </tr>
@@ -129,7 +129,7 @@ const MyPage1 = () => {
               <br></br>
               <tr className="tr1">
                 <td className="td">이메일</td>
-                <td className="td">{decoding.email}</td>
+                <td className="td">{decodetoken.email}</td>
               </tr>
               <br></br>
               <tr className="tr1">

@@ -198,8 +198,6 @@ const CRegister = () => {
             placeholder="email@gmail.com"
           />
 
-          <br />
-          <button /*onClick={dupcheck}*/>중복확인</button>
           <br></br>
           <br></br>
           <label htmlFor="password"> 비밀번호</label>
